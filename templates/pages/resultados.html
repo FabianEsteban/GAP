@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+        <title>Análisis GAP</title>
+
+    </head>
+
+    <style type="text/css">
+
+        #table{
+            width: 100%;
+            font: bold 100% monospace;
+        }
+
+        #encabezado{
+            background: rgb(51, 122, 183);
+            color: white;
+            text-align: center;
+        }
+
+        th, td{
+            text-align: left;
+            background: rgb(255,255,255);
+        }
+
+        th{
+            background: rgb(240,240,240);
+            color: black;
+        }
+
+        #checklist{
+            text-align: center;
+        }
+
+        #well{
+            background: white;
+        }
+
+    </style>
+
+<body>
+
+<div class="container">
+    <div class="row">
+      <h1 style="text-align:center">Resultados</h1><br>
+      <div class="col-lg-1"><br></div>
+      <div class="col-lg-10">
+
+<div id="well" style="height: 550px; overflow: auto; width: 100%; border: 1px solid rgb(193, 237, 255);">
+
+
+{% for x in datos %}
+<table id = 'table'>
+    <tr>
+        <th id = "encabezado">Checklist</th>
+        <th id = "encabezado">Dominio - Sección</th>
+        <th id = "encabezado">Cumplimiento</th>
+        <th id = "encabezado">Consejo</th>
+    </tr>
+    <tr>
+        <th id = 'checklist'>1</th>
+        <th>Política Seguridad</th>
+        <th id = 'checklist'>{{x.0}}%</th>
+        <th>{{x.1}}</th>
+    </tr>
+    <tr>
+        <td id = 'checklist'>1.1</td>
+        <td>Política Seguridad</td>
+        <td id = 'checklist'>{{x.0}}%</td>
+        <td>{{x.1}}</td>
+    </tr>
+    <tr>
+        <th id = 'checklist'>2</th>
+        <th>Organización de la Seguridad Informática</th>
+        <th id = 'checklist'>{{x.6}}%</th>
+        <th>{{x.7}}</th>
+    </tr>
+    <tr>
+        <td id = 'checklist'>2.1</td>
+        <td>Organización Interna</td>
+        <td id = 'checklist'>{{x.2}}%</td>
+        <td>{{x.3}}</td>
+    </tr>
+    <tr>
+        <td id = 'checklist'>2.2</td>
+        <td>Externos</td>
+        <td id = 'checklist'>{{x.4}}%</td>
+        <td>{{x.5}}</td>
+    </tr>
+    <tr>
+        <th id = 'checklist'>3</th>
+        <th>Administración Activos</th>
+        <th id = 'checklist'>{{x.12}}%</th>
+        <th>{{x.13}}</th>
+    </tr>
+    <tr>
+        <td id = 'checklist'>3.1</td>
+        <td>Responsabilidad sobre Activos</td>
+        <td id = 'checklist'>{{x.8}}%</td>
+        <td>{{x.9}}</td>
+    </tr>
+    <tr>
+        <td id = 'checklist'>3.2</td>
+        <td>Clasificación Información</td>
+        <td id = 'checklist'>{{x.10}}%</td>
+        <td>{{x.11}}</td>
+    </tr>
+    <tr>
+        <th id = 'checklist'>4</th>
+        <th>Seguridad Recursos Humanos</th>
+        <th id = 'checklist'>{{x.20}}%</th>
+        <th>{{x.21}}</th>
+    </tr>
+    <tr>
+        <td id = 'checklist'>4.1</td>
+        <td>Previo a contratación</td>
+        <td id = 'checklist'>{{x.14}}%</td>
+        <td>{{x.15}}</td>
+    </tr>
+    <tr>
+        <td id = 'checklist'>4.2</td>
+        <td>Durante el empleo</td>
+        <td id = 'checklist'>{{x.16}}%</td>
+        <td>{{x.17}}</td>
+    </tr>
+    <tr>
+        <td id = 'checklist'>4.3</td>
+        <td>Termino o transferencia laboral</td>
+        <td id = 'checklist'>{{x.18}}%</td>
+        <td>{{x.19}}</td>
+    </tr>
+</table>
+{% endfor %}
+</div>
+</div>
+<div class="col-lg-1"><br></div>
+</div>
+</div>
+</body>
+</html>
