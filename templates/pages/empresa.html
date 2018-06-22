@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+
+        <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+        <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+
+
+        <title>Análisis GAP</title>
+
+    </head>
+
+    <style>
+        body{
+            background-color: white;
+            font: 120% monospace;
+        }
+
+        /*Header*/
+           ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(19, 159, 215);
+            }
+
+            li {
+                float: left;
+                cursor: pointer;
+            }
+
+            li div {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+
+            }
+
+
+
+            .active {
+                background-color: red!important;
+                color: white!important;
+            }
+            /*Header*/
+
+        /*Footer*/
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: rgb(19, 159, 215);
+                color: white;
+                text-align: right;
+            }
+            /*Footer*/
+    </style>
+
+<body>
+
+    <!-- Navbar -->
+        <ul class="w3-animate-opacity">
+            <li><div style="color: white; cursor: default">{{usuario}}</div></li>
+            <li><div style="color: white; cursor: default">Análisis restantes: {{cantidad}}</div></li>
+            <li style="float:right"><a href="{% url 'logout' %}"><div style="color: white">Salir</div></a></li>
+        </ul>
+    <!-- Navbar -->
+
+<div class="container">
+    <div class="row"><br><br><br>
+        <h1 style="text-align:center; color:rgb(19, 159, 215)">Análisis GAP</h1><br><br>
+        <div class="col-lg-4"><br></div>
+        <div class="col-lg-4 well">
+{% if cantidad > 0 %}
+<a href="{% url 'preguntas' %}"><button type="submit" class="btn btn-success btn-lg center-block" >Realizar Análisis</button></a><br><br><br>
+{% else %}
+<button type="submit" class="btn btn-danger btn-lg center-block" >No quedan análisis</button><br><br><br>
+{% endif %}
+<a href="{% url 'promedio' %}"><button type="submit" class="btn btn-primary btn-lg center-block" >Resultados</button></a>
+
+</div>
+<div class="col-lg-4"><br></div>
+</div>
+</div>
+
+        <!--footer-->
+        <div class="footer">
+            <p style="margin-right: 15px;"> Desarrollado por la Universidad Andrés Bello</p>
+        </div>
+        <!--footer-->
+
+</body>
+</html>

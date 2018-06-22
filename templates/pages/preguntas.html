@@ -1,0 +1,3361 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+
+        <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+        <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+
+
+
+        <title>Análisis GAP</title>
+
+
+
+    </head>
+
+    <style>
+
+        #table{
+            width: 100%;
+        }
+
+        body{
+            font: 120% monospace;
+        }
+
+        #myProgress {
+        width: 80%;
+        background-color: #ddd;
+        }
+
+        #myBar {
+        width: 0%;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        }
+    </style>
+
+<body>
+
+
+
+<div class="container">
+    <div class="row">
+      <h2 style="text-align:center; color:rgb(19, 159, 215)">Análisis GAP</h2>
+      <div class="col-lg-12">
+
+    <form id="form" action="{% url 'resultados' %}" method="GET">
+        {% csrf_token %}
+
+
+
+<div id="well" style="height: 540px; overflow: auto; width: 100%; border: 1px solid rgb(193, 237, 255);">
+        <table id="table">
+
+           <tr><td><strong>1 Política Seguridad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong> &nbsp &nbsp 1.1 Política Seguridad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+
+           <tr><td><strong> &nbsp &nbsp &nbsp &nbsp 1.1.1 Documento Política Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbspExiste una Política de Seguridad Informática la cual ha sido aprobada por la Gerencia, publicada y comunicada a todos los empleados? </td>
+            </tr>
+            <tr id = "1">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="1" value="Si" onclick="cambia_color('rgb(67, 170, 139)')" required> Si
+                    <input type="radio" name="1" value="No" onclick="cambia_color('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="1" value="No se" onclick="cambia_color('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp La Politica establece el compromiso de la Gerencia y el acercamiento organizacional a la administración de seguridad informática?</td>
+            </tr>
+            <tr id="2">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="2" value="Si" onclick="cambia_color2('rgb(67, 170, 139)')" required> Si
+                    <input type="radio" name="2" value="No" value="No" onclick="cambia_color2('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="2" value="No se" onclick="cambia_color2('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>  &nbsp &nbsp &nbsp &nbsp 1.1.2 Revisión de Política Seguridad Informática</strong></td></tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la Política de Seguridad Informática es revisada en intervalos programados, o si cambios significativos ocurren para asegurarse su continuidad, adecuación y efectividad.	</td>
+            </tr>
+            <tr id="3">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="3" value="Si" onclick="cambia_color3('rgb(67, 170, 139)')" required> Si
+                    <input type="radio" name="3" value="No" onclick="cambia_color3('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="3" value="No se"onclick="cambia_color3('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la Política de Seguridad Informática tiene un dueño, el cual tiene responsabilidad aprobada para desarrollar, revisar y evaluar la Política de Seguridad.	 </td>
+            </tr>
+            <tr id="4">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="4" value="Si" onclick="cambia_color4('rgb(67, 170, 139)')" required> Si
+                    <input type="radio" name="4" value="No" onclick="cambia_color4('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="4" value="No se" onclick="cambia_color4('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si existe un procedimiento definido para la revisión de la Política de Seguridad Informática y si incluye requisitos para la revisión por la Gerencia.	 </td>
+            </tr>
+            <tr id="5">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="5" value="Si" onclick="cambia_color5('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="5" value="No" onclick="cambia_color5('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="5" value="No se" onclick="cambia_color5('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si se toman en cuenta los resultados de las revisiones gerenciales.	 </td>
+            </tr>
+            <tr id="6">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="6" value="Si" onclick="cambia_color6('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="6" value="No" onclick="cambia_color6('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="6" value="No se" onclick="cambia_color6('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si se obtiene la aprobación de la gerencia para la Política revisada.	</td>
+            </tr>
+           <tr id="7">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="7" value="Si" onclick="cambia_color7('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="7" value="No" onclick="cambia_color7('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="7" value="No se" onclick="cambia_color7('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>2 Organización de la Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 2.1 Organización Interna</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.1 Compromiso Gerencial a la Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la gerencia demuestra un apoyo activo a las medidas de seguridad dentro de la organización.</td>
+            </tr>
+            <tr id="8">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="8" value="Si" onclick="cambia_color8('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="8" value="No" onclick="cambia_color8('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="8" value="No se" onclick="cambia_color8('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.2 Coordinación Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si actividades relacionadas con la Seguridad Informática son coordinadas por representantes de diversas partes de la organización con roles y responsabilidades pertinentes.</td>
+            </tr>
+            <tr id="9">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="9" value="Si" onclick="cambia_color9('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="9" value="No" onclick="cambia_color9('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="9" value="No se" onclick="cambia_color9('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.3 Distribución Responsabilidades Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las responsabilidades para la protección de los activos individuales y el llevar a cabo procesos específicos de seguridad fueron definidos claramente.</td>
+            </tr>
+            <tr id="10">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="10" value="Si" onclick="cambia_color10('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="10" value="No" onclick="cambia_color10('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="10" value="No se" onclick="cambia_color10('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.4 Proceso Autorización para Facilidades de Procesos Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso de autorización gerencial definido e implementado para cualquier nueva facilidad de proceso de información.</td>
+            </tr>
+            <tr id="11">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="11" value="Si" onclick="cambia_color11('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="11" value="No" onclick="cambia_color11('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="11" value="No se" onclick="cambia_color11('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.5 Acuerdos de Confidencialidad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las necesidades de la organización con relación a acuerdos de confidencialidad y no divulgación (NDA) para la protección de la información han sido claramente definidos y regularmente revisados.</td>
+            </tr>
+            <tr id="12">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="12" value="Si" onclick="cambia_color12('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="12" value="No" onclick="cambia_color12('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="12" value="No se" onclick="cambia_color12('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.6 Contacto con Autoridades</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen procedimientos que describen cuando y por quien deben ser contactadas autoridades correspondientes como ser: la Policía, Bomberos, etc. y como debe ser reportado el incidente.</td>
+            </tr>
+            <tr id="13">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="13" value="Si" onclick="cambia_color13('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="13" value="No" onclick="cambia_color13('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="13" value="No se" onclick="cambia_color13('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.7 Contacto con Grupos de Interés Especial</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si contacto adecuado con grupos de interés especial o foros de especialistas de seguridad y asociaciones de profesionales son mantenidas.</td>
+            </tr>
+            <tr id="14">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="14" value="Si" onclick="cambia_color14('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="14" value="No" onclick="cambia_color14('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="14" value="No se" onclick="cambia_color14('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.8 Revisión Independiente de la Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la manera de administrar la seguridad informática y su implementación es revisada independientemente en intervalos planeados o cuando ocurren cambios mayores con relación a implementaciones de seguridad.</td>
+            </tr>
+            <tr id="15">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="15" value="Si" onclick="cambia_color15('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="15" value="No" onclick="cambia_color15('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="15" value="No se" onclick="cambia_color15('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 2.2 Externos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.1 Identificación de Riesgos por accesos de Externos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si riesgos a la información de la organización y sus instalaciones operacionales, de procesos que involucran a externos o terceros ha sido identificada y controles apropiados han sido implementados antes de otorgarles acceso.</td>
+            </tr>
+            <tr id="16">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="16" value="Si" onclick="cambia_color16('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="16" value="No" onclick="cambia_color16('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="16" value="No se" onclick="cambia_color16('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.2 Manejando la seguridad al tratar con Clientes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los requisitos de seguridad identificados son cumplidos antes de otorgarle acceso al cliente a la información o activos de la organización.</td>
+            </tr>
+            <tr id="17">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="17" value="Si" onclick="cambia_color17('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="17" value="No" onclick="cambia_color17('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="17" value="No se" onclick="cambia_color17('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.3 Manejando la seguridad en acuerdos con Terceros</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el acuerdo con terceros, involucrando accesos, procesos, comunicaciones o administración de la información de la organización o facilidades de proceso, o introduciendo productos o servicios a las facilidades de proceso de la información, cumple con todos los requisitos de seguridad adecuados.</td>
+            </tr>
+            <tr id="18">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="18" value="Si" onclick="cambia_color18('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="18" value="No" onclick="cambia_color18('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="18" value="No se" onclick="cambia_color18('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>3 Administración Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 3.1 Responsabilidad sobre Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.1 Inventario de Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los activos han sido identificados y un inventario o registro se mantiene con todos los activos importantes.</td>
+            </tr>
+            <tr id="19">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="19" value="Si" onclick="cambia_color19('rgb(67, 170, 139)')">Si
+                    <input type="radio" name="19" value="No" onclick="cambia_color19('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="19" value="No se" onclick="cambia_color19('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.2 Dueños de Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si cada activo identificado tiene un dueño, una clasificación de seguridad definida y acordada y restricción de accesos que son revisados regularmente.</td>
+            </tr>
+            <tr id="20">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="20" value="Si" onclick="cambia_color20('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="20" value="No" onclick="cambia_color20('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="20" value="No se" onclick="cambia_color20('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.3 Uso Aceptable de Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si regulaciones para el uso aceptable de información y activos asociados con una facilidad de proceso de la información han sido identificados, documentados e implementados.</td>
+            </tr>
+            <tr id="21">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="21" value="Si" onclick="cambia_color21('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="21" value="No" onclick="cambia_color21('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="21" value="No se" onclick="cambia_color21('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 3.2 Clasificación Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.2.1 Guía de Clasificación</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la información es clasificada en términos de valor, requisitos legales, sensibilidad y criticidad para la organización.</td>
+            </tr>
+            <tr id="22">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="22" value="Si" onclick="cambia_color22('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="22" value="No" onclick="cambia_color22('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="22" value="No se" onclick="cambia_color22('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.2.2 Etiquetado y Manejo de la Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si un set de procedimientos apropiados han sido definidos para el etiquetado y manejo de la información de acuerdo con el esquema de clasificación adoptada por la organización.</td>
+            </tr>
+            <tr id="23">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="23" value="Si" onclick="cambia_color23('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="23" value="No" onclick="cambia_color23('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="23" value="No se" onclick="cambia_color23('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>4 Seguridad Recursos Humanos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 4.1 Previo a contratación</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.1 Roles y Responsabilidades</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los roles y responsabilidades de seguridad de los empleados, contratistas y terceros fueron definidos y documentados de acuerdo con la política de seguridad informática de la organización.</td>
+            </tr>
+            <tr id="24">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="24" value="Si" onclick="cambia_color24('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="24" value="No" onclick="cambia_color24('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="24" value="No se" onclick="cambia_color24('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.2 Revisión Antecedentes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se efectuó una revisión de antecedentes para todos los candidatos a emplear, contratistas y terceros  según regulaciones relevantes.</td>
+            </tr>
+            <tr id="25">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="25" value="Si" onclick="cambia_color25('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="25" value="No" onclick="cambia_color25('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="25" value="No se" onclick="cambia_color25('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.3 Términos y Condiciones de Empleo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si a los empleados, contratistas y terceros se les pide de firmar un Acuerdo de Confidencialidad o NO Divulgación como parte de sus acuerdos iniciales y condiciones al contrato de trabajo.</td>
+            </tr>
+            <tr id="26">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="26" value="Si" onclick="cambia_color26('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="26" value="No" onclick="cambia_color26('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="26" value="No se" onclick="cambia_color26('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.4 Términos y Condiciones de Trabajo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los términos y condiciones de trabajo cubren las responsabilidades del empleado con relación a la seguridad informática.</td>
+            </tr>
+            <tr id="27">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="27" value="Si" onclick="cambia_color27('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="27" value="No" onclick="cambia_color27('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="27" value="No se" onclick="cambia_color27('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 4.2 Durante el empleo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.1 Responsabilidades Administrativas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la administración requiere que los empleados, contratistas y terceros apliquen seguridad de acuerdo con políticas y procedimientos establecidos por la organización.</td>
+            </tr>
+            <tr id="28">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="28" value="Si" onclick="cambia_color28('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="28" value="No" onclick="cambia_color28('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="28" value="No se" onclick="cambia_color28('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.2 Concientizacion, educación y entrenamiento sobre Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los empleados en la organización, y donde sea relevante, contratistas y terceros reciben entrenamiento adecuado de seguridad como también actualizaciones regulares en las políticas y procedimientos organizacionales correspondiente a su funciones.</td>
+            </tr>
+            <tr id="29">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="29" value="Si" onclick="cambia_color29('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="29" value="No" onclick="cambia_color29('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="29" value="No se" onclick="cambia_color29('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.3 Proceso disciplinario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso disciplinario formal para los empleados que han cometido una falta en seguridad.</td>
+            </tr>
+            <tr id="30">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="30" value="Si" onclick="cambia_color30('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="30" value="No" onclick="cambia_color30('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="30" value="No se" onclick="cambia_color30('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 4.3 Termino o transferencia laboral</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.1 Responsabilidades de termino</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las responsabilidades para efectuar la terminación o cambio laboral están claramente definidas y asignadas.</td>
+            </tr>
+            <tr id="31">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="31" value="Si" onclick="cambia_color31('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="31" value="No" onclick="cambia_color31('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="31" value="No se" onclick="cambia_color31('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.2 Devolución de Activos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso que asegure que todos los empleados, contratistas y terceros hagan entrega de los activos de la organización bajo su control al terminar su relación laboral, contrato o acuerdo.</td>
+            </tr>
+            <tr id="32">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="32" value="Si" onclick="cambia_color32('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="32" value="No" onclick="cambia_color32('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="32" value="No se" onclick="cambia_color32('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.3 Eliminación de derechos de Acceso</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los derechos de acceso de todos los empleados, contratistas y terceros a informaciones o facilidades informáticas, serán eliminados al termino de su relación laboral, contrato o acuerdo o será ajustado en caso de cambios.</td>
+            </tr>
+            <tr id="33">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="33" value="Si" onclick="cambia_color33('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="33" value="No" onclick="cambia_color33('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="33" value="No se" onclick="cambia_color33('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>5 Seguridad Física y Ambiental</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 5.1 Área Segura</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.1 Perímetro Seguridad Física</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Que facilidad de seguridad física ha sido implementado para proteger el servicio de procesamiento informático.</td>
+            </tr>
+            <tr id="34">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="34" value="Si" onclick="cambia_color34('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="34" value="No" onclick="cambia_color34('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="34" value="No se" onclick="cambia_color34('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.2 Controles de Ingreso Físico</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Que controles de acceso existen para solo permitir el ingreso de personal autorizado dentro de varias áreas de la organización.</td>
+            </tr>
+            <tr id="35">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="35" value="Si" onclick="cambia_color35('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="35" value="No" onclick="cambia_color35('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="35" value="No se" onclick="cambia_color35('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.3 Asegurar Oficinas, cuartos y facilidades</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los cuartos que contiene los servicios de procesamientos informáticos están cerrados o contiene gabinetes o cajas de seguridad cerradas.</td>
+            </tr>
+            <tr id="36">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="36" value="Si" onclick="cambia_color35('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="36" value="No" onclick="cambia_color35('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="36" value="No se" onclick="cambia_color35('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.4 Protegiendo contra amenazas externas y ambientales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la protección física contra daños de fuego, inundaciones, terremotos, explosiones, disturbios civiles y otras formas de desastres ya sean naturales o causados por el hombre deben ser diseñados y aplicados.</td>
+            </tr>
+            <tr id="37">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="37" value="Si" onclick="cambia_color37('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="37" value="No" onclick="cambia_color37('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="37" value="No se" onclick="cambia_color37('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen potenciales amenazas de predios aledaños.</td>
+            </tr>
+            <tr id="38">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="38" value="Si" onclick="cambia_color38('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="38" value="No" onclick="cambia_color38('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="38" value="No se" onclick="cambia_color38('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.5 Trabajando en Áreas Seguras</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si guías y protección física para trabajar en áreas seguras se han diseñado e implementado.</td>
+            </tr>
+            <tr id="39">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="39" value="Si" onclick="cambia_color39('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="39" value="No" onclick="cambia_color39('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="39" value="No se" onclick="cambia_color39('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.1.6 Áreas Publicas de Carga y Descarga </strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las áreas de entrega, carga y otras donde personal no autorizado pueden ingresar a las instalaciones son controladas y centros de procesamiento informáticos están aislados para evitar accesos no autorizados.</td>
+            </tr>
+            <tr id="40">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="40" value="Si" onclick="cambia_color40('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="40" value="No" onclick="cambia_color40('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="40" value="No se" onclick="cambia_color40('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 5.2 Seguridad Equipos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.1 Protección de los Equipos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Que Si los equipos han sido protegidos para reducir los riesgos de amenazas y peligros ambientales como oportunidades de accesos no autorizados.</td>
+            </tr>
+            <tr id="41">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="41" value="Si" onclick="cambia_color41('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="41" value="No" onclick="cambia_color41('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="41" value="No se" onclick="cambia_color41('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.2 Utilitarios de Apoyo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los equipos están protegidos de fallas eléctricas como también de otras fallas que pueden ser causadas por fallas en utilitarios de apoyo.</td>
+            </tr>
+            <tr id="42">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="42" value="Si" onclick="cambia_color42('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="42" value="No" onclick="cambia_color42('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="42" value="No se" onclick="cambia_color42('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si fuentes de energía permanentes como son múltiples entradas, UPS, generadores, etc. están siendo utilizados.</td>
+            </tr>
+            <tr id="43">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="43" value="Si" onclick="cambia_color43('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="43" value="No" onclick="cambia_color43('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="43" value="No se" onclick="cambia_colr43('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.3 Seguridad del Cableado</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los cables de energía eléctrica y telecomunicaciones que transmiten datos o apoyan los servicios informáticos son protegidos de intercepciones o daños.</td>
+            </tr>
+            <tr id="44">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="44" value="Si" onclick="cambia_color44('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="44" value="No" onclick="cambia_color44('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="44" value="No se" onclick="cambia_color44('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe cualquier control de seguridad adicional para las informaciones sensibles y criticas.</td>
+            </tr>
+            <tr id="45">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="45" value="Si" onclick="cambia_color45('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="45" value="No" onclick="cambia_color45('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="45" value="No se" onclick="cambia_color45('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.4 Mantenimiento de Equipos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los equipos son mantenidos correctamente para asegurar su disponibilidad e integridad.</td>
+            </tr>
+            <tr id="46">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="46" value="Si" onclick="cambia_color46('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="46" value="No" onclick="cambia_color46('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="46" value="No se" onclick="cambia_color46('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si el equipo es mantenido según las especificaciones e intervalos de servicio que recomiendan los proveedores. </td>
+            </tr>
+            <tr id="47">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="47" value="Si" onclick="cambia_color47('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="47" value="No" onclick="cambia_color47('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="47" value="No se" onclick="cambia_color47('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si el mantenimiento solo es efectuado por personal autorizado.</td>
+            </tr>
+            <tr id="48">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="48" value="Si" onclick="cambia_color48('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="48" value="No" onclick="cambia_color48('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="48" value="No se" onclick="cambia_color48('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si registros son mantenidos con todas las posibles fallas o fallas actuales con todas sus medidas preventivas y correctivas.</td>
+            </tr>
+            <tr id="49">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="49" value="Si" onclick="cambia_color49('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="49" value="No" onclick="cambia_color49('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="49" value="No se" onclick="cambia_color49('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si controles apropiados han sido implementados cuando se envían equipos fuera de las oficinas. </td>
+            </tr>
+            <tr id="50">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="50" value="Si" onclick="cambia_color50('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="50" value="No" onclick="cambia_color50('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="50" value="No se" onclick="cambia_color50('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si el equipo esta cubierto por seguros y si los requisitos del seguro se cumplen.</td>
+            </tr>
+            <tr id="51">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="51" value="Si" onclick="cambia_color51('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="51" value="No" onclick="cambia_color51('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="51" value="No se" onclick="cambia_color51('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.5 Asegurando equipos utilizados fuera de las oficinas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los riesgos fueron evaluados con relación a cualquier uso de equipos fuera de las instalaciones de la organización y controles para mitigar los riesgos han sido implementados.</td>
+            </tr>
+            <tr id="52">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="52" value="Si" onclick="cambia_color52('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="52" value="No" onclick="cambia_color52('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="52" value="No se" onclick="cambia_color52('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si el uso de una facilidad de procesamiento de la información localizado fuera de la organización ha sido autorizado por la gerencia.</td>
+            </tr>
+            <tr id="53">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="53" value="Si" onclick="cambia_color53('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="53" value="No" onclick="cambia_color53('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="53" value="No se" onclick="cambia_color53('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.6 Asegurar la re-utilización o desecho de equipos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todo equipo que contenga medios de almacenamiento es revisado para asegurarse de que cualquier información sensitiva o software bajo licencia ha sido físicamente destruido o re-grabado en forma segura antes de ser desechado o de su re-utilización.</td>
+            </tr>
+            <tr id="54">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="54" value="Si" onclick="cambia_color54('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="54" value="No" onclick="cambia_color54('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="54" value="No se" onclick="cambia_color54('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 5.2.7 Remoción de Propiedad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen controles para que los equipos, información y software no sean llevados fuera de la organización sin previa autorización.</td>
+            </tr>
+            <tr id="54">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="55" value="Si" onclick="cambia_color55('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="55" value="No" onclick="cambia_color55('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="55" value="No se" onclick="cambia_color55('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>6 Administración Comunicaciones y Operaciones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 6.1 Procedimiento Operacional y Responsabilidades</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.1.1 Procedimientos operativos documentados</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el procedimiento operacional esta documentado, mantenido y disponible para todos los usuarios que lo necesiten.</td>
+            </tr>
+            <tr id="55">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="55" value="Si" onclick="cambia_color55('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="55" value="No" onclick="cambia_color55('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="55" value="No se" onclick="cambia_color55('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si dichos procedimientos son tratados como un documento formal y por lo tanto cualquier cambio que se necesite hacerle, requiere de la autorización gerencial.</td>
+            </tr>
+            <tr id="56">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="56" value="Si" onclick="cambia_color56('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="56" value="No" onclick="cambia_color56('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="56" value="No se" onclick="cambia_color56('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.1.2 Control de Cambios Operacionales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los cambios a los centros de procesamiento de la información y los sistemas esta controlado.</td>
+            </tr>
+            <tr id="57">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="57" value="Si" onclick="cambia_color57('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="57" value="No" onclick="cambia_color57('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="57" value="No se" onclick="cambia_color57('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si registros de auditoria son mantenidos para reflejar cambios efectuados a los programas productivos.</td>
+            </tr>
+            <tr id="58">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="58" value="Si" onclick="cambia_color58('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="58" value="No" onclick="cambia_color58('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="58" value="No se" onclick="cambia_color58('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.1.3 Segregación de Funciones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si derechos y áreas de responsabilidad son separados con la intención de reducir oportunidades de modificación o mal uso no autorizado de información o servicios.</td>
+            </tr>
+            <tr id="59">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="59" value="Si" onclick="cambia_color59('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="59" value="No" onclick="cambia_color59('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="59" value="No se" onclick="cambia_color59('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.1.4 Separación de facilidades de desarrollo y operacionales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las facilidades de desarrollo y pruebas están aisladas de las facilidades operacionales.</td>
+            </tr>
+            <tr id="60">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="60" value="Si" onclick="cambia_color60('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="60" value="No" onclick="cambia_color60('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="60" value="No se" onclick="cambia_color60('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.2 Administración entrega de Servicios a Terceros</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.2.1 Entrega de Servicios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se mantienen mediciones para garantizar que los controles de seguridad, definición de servicios y niveles de entrega que se incluyen en el acuerdo de Entrega de Servicios a terceros están implementados, operando y mantenidos por un tercero.</td>
+            </tr>
+            <tr id="61">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="61" value="Si" onclick="cambia_color61('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="61" value="No" onclick="cambia_color61('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="61" value="No se" onclick="cambia_color61('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.2.2 Monitoreo y Revisión de Servicios de Terceros</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los servicios, reportes y registros proveídos por terceros son regularmente monitoreados y revisados.</td>
+            </tr>
+            <tr id="62">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="62" value="Si" onclick="cambia_color62('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="62" value="No" onclick="cambia_color62('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="62" value="No se" onclick="cambia_color62('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se efectúan auditorias sobre los servicios de terceros, reportes y registros en forma reiterada.</td>
+            </tr>
+            <tr id="63">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="63" value="Si" onclick="cambia_color63('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="63" value="No" onclick="cambia_color63('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="63" value="No se" onclick="cambia_color63('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.2.3 Administrando cambios a los Servicios de Terceros</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los cambios para provisionar los servicios, incluyendo mantenimiento y mejoras a políticas, procedimientos y controles de seguridad informática existentes son administrados.</td>
+            </tr>
+            <tr id="64">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="64" value="Si" onclick="cambia_color64('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="64" value="No" onclick="cambia_color64('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="64" value="No se" onclick="cambia_color64('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.3 Planeacion y Aceptación de Sistemas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.3.1 Administración de Capacidad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las demanda de capacidad es monitoreada y proyecciones de requisitos futuros son hechos para asegurar un adecuado poder de procesamiento y almacenaje están disponibles.</td>
+            </tr>
+            <tr id="65">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="65" value="Si" onclick="cambia_color65('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="65" value="No" onclick="cambia_color65('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="65" value="No se" onclick="cambia_color65('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.3.2 Aceptación de Sistemas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si criterios para la aceptación de sistemas han sido establecidos para nuevos sistemas informáticos, actualizaciones y nuevas versiones.</td>
+            </tr>
+            <tr id="66">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="66" value="Si" onclick="cambia_color66('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="66" value="No" onclick="cambia_color66('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="66" value="No se" onclick="cambia_color66('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si se llevaron a cabo pruebas previas a la aceptación.</td>
+            </tr>
+            <tr id="67">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="67" value="Si" onclick="cambia_color67('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="67" value="No" onclick="cambia_color67('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="67" value="No se" onclick="cambia_color67('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.4 Protección contra código malicioso y móvil	</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.4.1 Control contra código malicioso</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles para la detección, prevención y control de recuperación para proteger contra código malicioso como también procedimientos de concientizacion del usuario han sido desarrollados e implementados.</td>
+            </tr>
+            <tr id="68">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="68" value="Si" onclick="cambia_color68('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="68" value="No" onclick="cambia_color68('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="68" value="No se" onclick="cambia_color68('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.4.2 Control contra código móvil</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si solo se usa código móvil autorizado.</td>
+            </tr>
+            <tr id="69">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="69" value="Si" onclick="cambia_color69('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="69" value="No" onclick="cambia_color69('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="69" value="No se" onclick="cambia_color69('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si la configuración asegura que el código móvil autorizado opera según las políticas de seguridad.</td>
+            </tr>
+            <tr id="70">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="70" value="Si" onclick="cambia_color70('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="70" value="No" onclick="cambia_color70('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="70" value="No se" onclick="cambia_color70('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Si la ejecución de código móvil no autorizado es evitado. </td>
+            </tr>
+            <tr id="71">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="71" value="Si" onclick="cambia_color71('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="71" value="No" onclick="cambia_color71('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="71" value="No se" onclick="cambia_color71('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.5 Respaldo / Backup</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.5.1 Respaldo de la Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si respaldos tanto de informaciones como de software se efectúan con regularidad y se prueban de acuerdo con la política de respaldos acordada.</td>
+            </tr>
+            <tr id="72">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="72" value="Si" onclick="cambia_color72('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="72" value="No" onclick="cambia_color72('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="72" value="No se" onclick="cambia_color72('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si toda información y software esencial puede ser recuperada seguido de un desastre o falla de medio.</td>
+            </tr>
+            <tr id="73">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="73" value="Si" onclick="cambia_color73('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="73" value="No" onclick="cambia_color73('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="73" value="No se" onclick="cambia_color73('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.6 Administración Seguridad de la Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.6.1 Control de la Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la red esta adecuadamente administrada y controlada para protegerla de amenazas y para mantener la seguridad de los sistemas y aplicaciones utilizando la red, incluyendo la información en transito.</td>
+            </tr>
+            <tr id="74">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="74" value="Si" onclick="cambia_color74('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="74" value="No" onclick="cambia_color74('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="74" value="No se" onclick="cambia_color74('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles fueron implementados para garantizar la seguridad de la información en la red y la protección de servicios conectados de amenazas como ser los accesos no autorizados.</td>
+            </tr>
+            <tr id="75">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="75" value="Si" onclick="cambia_color75('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="75" value="No" onclick="cambia_color75('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="75" value="No se" onclick="cambia_color75('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.6.2 Seguridad de los Servicios de la Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las descripciones de seguridad, niveles de servicio y requisitos administrativos de todos los servicios de la red son identificados e incluidos en cualquier acuerdo de servicios de la red.    </td>
+            </tr>
+            <tr id="76">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="76" value="Si" onclick="cambia_color76('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="76" value="No" onclick="cambia_color76('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="76" value="No se" onclick="cambia_color76('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el proveedor de servicios de la red tiene la capacidad de administrar los servicios acordados en una forma segura, definidos y regularmente monitoreados y con el derecho de auditar según lo acordado.</td>
+            </tr>
+            <tr id="77">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="77" value="Si" onclick="cambia_color77('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="77" value="No" onclick="cambia_color77('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="77" value="No se" onclick="cambia_color77('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.7 Manejo de Medios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.7.1 Administración de Medios removibles</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen procedimientos para la administración de medios removibles como son las cintas, discos, disquetes, CDs, tarjetas de memoria y reportes.  </td>
+            </tr>
+            <tr id="78">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="78" value="Si" onclick="cambia_color78('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="78" value="No" onclick="cambia_color78('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="78" value="No se" onclick="cambia_color78('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los procedimientos y niveles de autorización son claramente definidos y documentados.</td>
+            </tr>
+            <tr id="79">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="79" value="Si" onclick="cambia_color79('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="79" value="No" onclick="cambia_color79('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="79" value="No se" onclick="cambia_color79('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.7.2 Desechar Medios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los medios que ya no son requeridos son desechados en forma segura según un procedimiento formal.</td>
+            </tr>
+            <tr id="80">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="80" value="Si" onclick="cambia_color80('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="80" value="No" onclick="cambia_color80('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="80" value="No se" onclick="cambia_color80('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.7.3 Procedimiento Manejo Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un procedimiento para manejar el almacenaje de la información.</td>
+            </tr>
+            <tr id="81">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="81" value="Si" onclick="cambia_color81('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="81" value="No" onclick="cambia_color81('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="81" value="No se" onclick="cambia_color81('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.7.4 Seguridad de Documentación de Sistemas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la documentación de sistemas es protegida contra accesos no autorizados.</td>
+            </tr>
+            <tr id="82">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="82" value="Si" onclick="cambia_color82('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="82" value="No" onclick="cambia_color82('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="82" value="No se" onclick="cambia_color82('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.8 Intercambio de Información	</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.8.1 Políticas y Procedimientos Intercambio Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe una política, procedimiento y control de intercambio formal que asegure la protección de la información.</td>
+            </tr>
+            <tr id="83">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="83" value="Si" onclick="cambia_color83('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="83" value="No" onclick="cambia_color83('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="83" value="No se" onclick="cambia_color83('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.8.2 Acuerdos de Intercambio</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se han establecido acuerdos con relación al intercambio de información y software entre la organización y terceros.    </td>
+            </tr>
+            <tr id="84">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="84" value="Si" onclick="cambia_color84('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="84" value="No" onclick="cambia_color84('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="84" value="No se" onclick="cambia_color84('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el contenido de seguridad del acuerdo refleja la sensibilidad de la información del negocio involucrada.</td>
+            </tr>
+            <tr id="85">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="85" value="Si" onclick="cambia_color85('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="85" value="No" onclick="cambia_color85('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="85" value="No se" onclick="cambia_color85('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.8.3 Medios Físicos en transito</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los medios conteniendo información es protegida contra accesos no autorizados, mal uso o corrupción durante su transportación fuera de las instalaciones físicas de la organización.</td>
+            </tr>
+            <tr id="86">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="86" value="Si" onclick="cambia_color86('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="86" value="No" onclick="cambia_color86('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="86" value="No se" onclick="cambia_color86('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.8.4 Mensajeria Electrónica</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la información involucrada en mensajeria electrónica esta bien protegida.</td>
+            </tr>
+            <tr id="87">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="87" value="Si" onclick="cambia_color87('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="87" value="No" onclick="cambia_color87('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="87" value="No se" onclick="cambia_color87('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.8.5 Sistemas Informáticos de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si políticas y procedimientos han sido desarrollados y reforzados para proteger información asociados con la interconexión de los sistemas informáticos de los negocios.</td>
+            </tr>
+            <tr id="88">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="88" value="Si" onclick="cambia_color88('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="88" value="No" onclick="cambia_color88('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="88" value="No se" onclick="cambia_color88('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.9 Servicios de Comercio Electrónico</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.9.1 Comercio Electrónico</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la información involucrada en el comercio electrónico que se transmite sobre redes publicas esta protegida de actividades fraudulentas, disputas contractuales y cualquier acceso no autorizado o modificaciones.</td>
+            </tr>
+            <tr id="89">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="89" value="Si" onclick="cambia_color89('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="89" value="No" onclick="cambia_color89('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="89" value="No se" onclick="cambia_color89('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles de seguridad como la aplicación de controles criptográficos se han tomado en consideración.</td>
+            </tr>
+            <tr id="90">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="90" value="Si" onclick="cambia_color90('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="90" value="No" onclick="cambia_color90('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="90" value="No se" onclick="cambia_color90('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si acuerdos sobre comercio electrónico entre los socios incluyen un acuerdo documentado el cual compromete a ambas partes a los términos de comercio incluyendo detalles de temas de seguridad.</td>
+            </tr>
+            <tr id="91">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="91" value="Si" onclick="cambia_color91('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="91" value="No" onclick="cambia_color91('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="91" value="No se" onclick="cambia_color91('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.9.2 Transacciones en Línea</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si informaciones involucradas en transacciones en línea esta protegida para evitar transmisiones incompletas, mal ruteo, alteración no autorizados del mensaje, divulgación no autorizado, duplicación no autorizado del mensaje o respuesta.</td>
+            </tr>
+            <tr id="92">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="92" value="Si" onclick="cambia_color92('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="92" value="No" onclick="cambia_color92('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="92" value="No se" onclick="cambia_color92('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.9.3 Información Disponible Públicamente</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la integridad de información públicamente disponible esta protegida contra modificaciones no autorizadas.</td>
+            </tr>
+            <tr id="93">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="93" value="Si" onclick="cambia_color93('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="93" value="No" onclick="cambia_color93('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="93" value="No se" onclick="cambia_color93('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 6.10 Monitoreo	/strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.1 Log de Auditoria</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los registros o logs de auditoria registran la actividad de usuarios, excepciones y eventos relacionados con seguridad informática son producidos y mantenidos por un periodo acordado para asistir en futuras investigaciones y monitoreo de control de accesos.</td>
+            </tr>
+            <tr id="94">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="94" value="Si" onclick="cambia_color94('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="94" value="No" onclick="cambia_color94('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="94" value="No se" onclick="cambia_color94('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.2 Monitoreo del Uso de Sistema</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se desarrollaron procedimientos para monitorear el uso de sistemas de las facilidades de procesamientos de informática y se refuerza su cumplimiento.     </td>
+            </tr>
+            <tr id="95">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="95" value="Si" onclick="cambia_color95('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="95" value="No" onclick="cambia_color95('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="95" value="No se" onclick="cambia_color95('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los resultados del monitoreo se revisan regularmente.</td>
+            </tr>
+            <tr id="96">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="96" value="Si" onclick="cambia_color96('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="96" value="No" onclick="cambia_color96('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="96" value="No se" onclick="cambia_color96('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el nivel de monitoreo de una facilidad de procesamiento de la información es determinado por una evaluación de riesgo.</td>
+            </tr>
+            <tr id="97">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="97" value="Si" onclick="cambia_color97('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="97" value="No" onclick="cambia_color97('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="97" value="No se" onclick="cambia_color97('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.3 Protección de Información de los Registros/Logs</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las áreas donde se almacenan los registros/logs y las informaciones de los registros/logs están bien protegidas contra manipulación y accesos no autorizados.</td>
+            </tr>
+            <tr id="98">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="98" value="Si" onclick="cambia_color98('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="98" value="No" onclick="cambia_color98('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="98" value="No se" onclick="cambia_color98('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.4 Registros/logs de Administradores y Operadores</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las actividades de los Administradores o Operadores son registradas.</td>
+            </tr>
+            <tr id="99">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="99" value="Si" onclick="cambia_color99('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="99" value="No" onclick="cambia_color99('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="99" value="No se" onclick="cambia_color99('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si dichos registros son revisados con regularidad.</td>
+            </tr>
+            <tr id="100">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="100" value="Si" onclick="cambia_color100('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="100" value="No" onclick="cambia_color100('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="100" value="No se" onclick="cambia_color100('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.5 Registros/logs de Fallas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si fallas son registradas y analizadas y se toman acciones apropiadas.</td>
+            </tr>
+            <tr id="101">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="101" value="Si" onclick="cambia_color101('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="101" value="No" onclick="cambia_color101('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="101" value="No se" onclick="cambia_color101('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el nivel de registro requerido para sistemas individuales es determinado por una evaluación de riesgo tomando en cuenta la degradación en performance.</td>
+            </tr>
+            <tr id="102">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="102" value="Si" onclick="cambia_color102('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="102" value="No" onclick="cambia_color102('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="102" value="No se" onclick="cambia_color102('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 6.10.6 Sincronización de Reloj</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el reloj de todos los sistemas de procesamiento de la información dentro de la organización o dominio de seguridad son sincronizados con una fuente acordada.</td>
+            </tr>
+            <tr id="103">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="103" value="Si" onclick="cambia_color103('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="103" value="No" onclick="cambia_color103('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="103" value="No se" onclick="cambia_color103('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>7 Control de Accesos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 7.1 Requisitos de Control de Acceso de Negocios	</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.1.1 Política de Control de Acceso</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si una política de control de accesos ha sido desarrollada y revisada basada en los requisitos del negocio y seguridad.</td>
+            </tr>
+            <tr id="104">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="104" value="Si" onclick="cambia_color104('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="104" value="No" onclick="cambia_color104('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="104" value="No se" onclick="cambia_color104('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si ambos controles de acceso tanto físico como lógicos han sido considerados en la política.</td>
+            </tr>
+            <tr id="105">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="105" value="Si" onclick="cambia_color105('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="105" value="No" onclick="cambia_color105('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="105" value="No se" onclick="cambia_color105('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los usuarios y proveedores de servicios se les entrego un claro mensaje sobre los requisitos del negocio a ser cumplidos con relación al control de acceso.</td>
+            </tr>
+            <tr id="106">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="106" value="Si" onclick="cambia_color106('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="106" value="No" onclick="cambia_color106('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="106" value="No se" onclick="cambia_color106('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.2 Administración Acceso Usuarios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.2.1 Registro de Usuario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un procedimiento formal para el registro o el de-registro de los usuarios para otorgarles acceso a los servicios y sistemas informáticos multi-usuarios.</td>
+            </tr>
+            <tr id="107">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="107" value="Si" onclick="cambia_color107('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="107" value="No" onclick="cambia_color107('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="107" value="No se" onclick="cambia_color107('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.2.2 Administración Privilegiada</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la asignación o uso de cualquier privilegio en los ambientes de los sistemas informáticos esta restringido y controlado.</td>
+            </tr>
+            <tr id="108">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="108" value="Si" onclick="cambia_color108('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="108" value="No" onclick="cambia_color108('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="108" value="No se" onclick="cambia_color108('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.2.3 Administración de Contraseñas del Usuario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp La asignación o re-asignación de contraseñas debe ser controlado por un proceso formal de administración de contraseñas.</td>
+            </tr>
+            <tr id="109">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="109" value="Si" onclick="cambia_color109('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="109" value="No" onclick="cambia_color109('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="109" value="No se" onclick="cambia_color109('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.2.4 Revisión de los derechos de acceso del usuario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso para la revisión de los derechos de acceso de los usuarios en forma regular.</td>
+            </tr>
+            <tr id="110">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="110" value="Si" onclick="cambia_color110('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="110" value="No" onclick="cambia_color110('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="110" value="No se" onclick="cambia_color110('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.3 Responsabilidades del Usuario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.3.1 Uso de Contraseñas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen practicas de seguridad que guíen al usuario en seleccionar y mantener contraseñas seguras.</td>
+            </tr>
+            <tr id="111">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="111" value="Si" onclick="cambia_color111('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="111" value="No" onclick="cambia_color111('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="111" value="No se" onclick="cambia_color111('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.3.2 Equipos de Usuario desatendidos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los usuarios y contratistas han sido informados sobre los requisitos de seguridad y los procedimientos para la protección de los equipos desprotegidos.</td>
+            </tr>
+            <tr id="112">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="112" value="Si" onclick="cambia_color112('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="112" value="No" onclick="cambia_color112('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="112" value="No se" onclick="cambia_color112('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.4 Control Acceso Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.1 Política sobre el uso de Servicios de la Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si a los usuarios se les provee con acceso solo a los servicios que han sido específicamente autorizados a usar.   </td>
+            </tr>
+            <tr id="113">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="113" value="Si" onclick="cambia_color113('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="113" value="No" onclick="cambia_color113('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="113" value="No se" onclick="cambia_color113('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe una política que maneja las temas relacionados con redes y servicios de red.</td>
+            </tr>
+            <tr id="114">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="114" value="Si" onclick="cambia_color114('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="114" value="No" onclick="cambia_color114('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="114" value="No se" onclick="cambia_color114('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.2 Autenticación del Usuario para conexiones externas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen mecanismos de autenticación adecuados para el control de accesos de usuarios remotos.</td>
+            </tr>
+            <tr id="115">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="115" value="Si" onclick="cambia_color115('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="115" value="No" onclick="cambia_color115('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="115" value="No se" onclick="cambia_color115('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.3 Identificación de Equipos en la Red</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si identificación automática de equipos es considerado como medio para autenticar conexiones de localidades especificas y equipos.</td>
+            </tr>
+            <tr id="116">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="116" value="Si" onclick="cambia_color116('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="116" value="No" onclick="cambia_color116('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="116" value="No se" onclick="cambia_color116('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.4 Diagnostico Remoto y configuración de Protección de Puertos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el acceso lógico y físico a puertos de diagnostico están controlados de forma segura.</td>
+            </tr>
+            <tr id="117">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="117" value="Si" onclick="cambia_color117('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="117" value="No" onclick="cambia_color117('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="117" value="No se" onclick="cambia_color117('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.5 Segregación en Redes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si grupos de servicios informáticos, usuarios y sistemas informáticos están segregados en la red. </td>
+            </tr>
+            <tr id="118">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="118" value="Si" onclick="cambia_color118('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="118" value="No" onclick="cambia_color118('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="118" value="No se" onclick="cambia_color118('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la red (donde socios y/o terceros necesitan accesar los sistemas informáticos) esta segregada utilizando mecanismos de seguridad perimetral como ser un cortafuegos.     </td>
+            </tr>
+            <tr id="119">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="119" value="Si" onclick="cambia_color119('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="119" value="No" onclick="cambia_color119('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="119" value="No se" onclick="cambia_color119('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si consideraciones se han tomado para segregar redes inalámbricas de redes internas y privadas.</td>
+            </tr>
+            <tr id="120">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="120" value="Si" onclick="cambia_color20('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="120" value="No" onclick="cambia_color120('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="120" value="No se" onclick="cambia_color120('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.6 Protocolo de Conexión de Redes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe alguna política de control de acceso el cual establece el control de conexión de redes para redes compartidas; especialmente las que se extienden fuera de las fronteras de la organización. </td>
+            </tr>
+            <tr id="121">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="121" value="Si" onclick="cambia_color121('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="121" value="No" onclick="cambia_color121('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="121" value="No se" onclick="cambia_color121('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.4.7 Control ruteo de Redes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la política de control de accesos establece si controles en el ruteo han de ser implementados para las redes.</td>
+            </tr>
+            <tr id="122">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="122" value="Si" onclick="cambia_color122('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="122" value="No" onclick="cambia_color122('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="122" value="No se" onclick="cambia_color122('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los controles de ruteo están basados en las fuentes positivas y mecanismos de identificación del destinatario. Ejemplo: Network Address Translation (NAT).</td>
+            </tr>
+            <tr id="123">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="123" value="Si" onclick="cambia_color123('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="123" value="No" onclick="cambia_color123('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="123" value="No se" onclick="cambia_color123('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.5 Control de Acceso Sistemas Operativos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.1 Procedimiento Seguro de Log-on</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el acceso a sistemas operativos es controlado por un procedimiento de log-on seguro.</td>
+            </tr>
+            <tr id="124">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="124" value="Si" onclick="cambia_color124('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="124" value="No" onclick="cambia_color124('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="124" value="No se" onclick="cambia_color124('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.2 Identificación y Autenticacion del Usuario</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si un identificador único es otorgado a cada usuario como son los operadores, administradores de sistemas y todos los demás empleados incluyendo personal técnico. </td>
+            </tr>
+            <tr id="125">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="125" value="Si" onclick="cambia_color125('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="125" value="No" onclick="cambia_color125('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="125" value="No se" onclick="cambia_color125('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se ha escogido una técnica de autenticación aceptable para sustanciar la identidad correspondiente del usuario.</td>
+            </tr>
+            <tr id="126">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="126" value="Si" onclick="cambia_color126('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="126" value="No" onclick="cambia_color126('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="126" value="No se" onclick="cambia_color126('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.3 Sistema de Administración de Contraseña</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un sistema de administración de contraseñas que fuerza varios controles de contraseñas como ser: contraseñas individuales, forzar cambios de las contraseñas, almacenar las contraseñas en forma encriptada, no desplegar las contraseñas en las terminales/pantallas etc.</td>
+            </tr>
+            <tr id="127">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="127" value="Si" onclick="cambia_color127('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="127" value="No" onclick="cambia_color127('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="127" value="No se" onclick="cambia_color127('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.4 Utilización de Utilitarios de Sistemas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los utilitarios de sistemas que vienen con las instalaciones de las computadoras, pero que pueden bypasear controles de los sistemas y aplicaciones son controlados en forma rigurosa.</td>
+            </tr>
+            <tr id="128">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="128" value="Si" onclick="cambia_color128('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="128" value="No" onclick="cambia_color128('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="128" value="No se" onclick="cambia_color128('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.5 Time-out de las Sesiones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si sesiones inactivas son desactivadas después de un periodo de inactividad definido.</td>
+            </tr>
+            <tr id="129">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="129" value="Si" onclick="cambia_color129('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="129" value="No" onclick="cambia_color129('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="129" value="No se" onclick="cambia_color129('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.5.6 Limite de tiempo de Conexión</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe alguna restricción en el tiempo de conexión para aplicaciones de alto riesgo..</td>
+            </tr>
+            <tr id="130">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="130" value="Si" onclick="cambia_color130('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="130" value="No" onclick="cambia_color130('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="130" value="No se" onclick="cambia_color130('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.6 Control de Acceso Aplicaciones e Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.6.1 Restricción Acceso a la Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si acceso a las funciones de sistemas informáticos y aplicaciones por usuarios y personal de soporte están restringidos de acuerdo con lo definido en la política de control de acceso.</td>
+            </tr>
+            <tr id="131">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="131" value="Si" onclick="cambia_color131('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="131" value="No" onclick="cambia_color131('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="131" value="No se" onclick="cambia_color131('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.6.2 Aislamiento de Sistemas Sensitivos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los sistemas sensitivos están proveídos de una ambiente computacional dedicado (aislado) como es el de correr en un computador dedicado, recursos compartidos solo con sistemas de aplicaciones confiables, etc.</td>
+            </tr>
+            <tr id="132">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="132" value="Si" onclick="cambia_color132('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="132" value="No" onclick="cambia_color132('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="132" value="No se" onclick="cambia_color132('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 7.7 Computación Móvil y Tele trabajo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.7.1 Computación Móvil y comunicaciones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe una Política formal y medidas de seguridad apropiados para proteger contra los riesgos de utilizar computación móvil y facilidades de comunicaciones.</td>
+            </tr>
+            <tr id="133">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="133" value="Si" onclick="cambia_color133('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="133" value="No" onclick="cambia_color133('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="133" value="No se" onclick="cambia_color133('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los riesgos tal como es el trabajar en un ambiente no seguro ha sido considerado dentro de la política de computación móvil.</td>
+            </tr>
+            <tr id="134">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="134" value="Si" onclick="cambia_color134('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="134" value="No" onclick="cambia_color134('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="134" value="No se" onclick="cambia_color134('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 7.7.2 Teletrabajo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se ha desarrollado e implementado una Política, plan operacional y procedimiento  para las actividades del teletrabajo.</td>
+            </tr>
+            <tr id="135">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="135" value="Si" onclick="cambia_color135('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="135" value="No" onclick="cambia_color135('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="135" value="No se" onclick="cambia_color135('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la actividad de teletrabajo esta autorizada y controlada por la administración y se asegura de que acuerdos adecuados existen para esta forma de trabajo.</td>
+            </tr>
+            <tr id="136">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="136" value="Si" onclick="cambia_color136('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="136" value="No" onclick="cambia_color136('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="136" value="No se" onclick="cambia_color136('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>8 Adquisición, desarrollo y mantenimiento de Sistemas Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 8.1 Requisitos de Seguridad de Sistemas Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.1.1 Requisitos de Seguridad  Análisis y Especificaciones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos de seguridad para nuevos sistemas informáticos y mejoras a sistemas informáticos existentes especifican los requisitos de controles de seguridad.</td>
+            </tr>
+            <tr id="137">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="137" value="Si" onclick="cambia_color137('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="137" value="No" onclick="cambia_color137('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="137" value="No se" onclick="cambia_color137('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos de seguridad y controles identificados reflejan los valores del negocio correspondiente a los activos informáticos involucrados y las consecuencias en caso de fallas de Seguridad.</td>
+            </tr>
+            <tr id="138">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="138" value="Si" onclick="cambia_color138('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="138" value="No" onclick="cambia_color138('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="138" value="No se" onclick="cambia_color138('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos de sistemas para seguridad informática y procesos para la implementación de seguridad son integrados en las etapas iniciales de los proyectos de sistemas informáticos.</td>
+            </tr>
+            <tr id="139">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="139" value="Si" onclick="cambia_color139('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="139" value="No" onclick="cambia_color139('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="139" value="No se" onclick="cambia_color139('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 8.2 Procesos correctos en aplicaciones</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.2.1 Validación de Input de Datos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el ingreso de datos a las aplicaciones son validados para asegurarse de que son correctos y apropiados.</td>
+            </tr>
+            <tr id="140">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="140" value="Si" onclick="cambia_color140('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="140" value="No" onclick="cambia_color140('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="140" value="No se" onclick="cambia_color140('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los controles tales como: diferentes tipos de datos para validar mensajes de error, procedimientos para responder a errores de validación, definición de responsabilidades de todo el personal involucrados en el proceso de ingreso de datos, etc., son considerados.</td>
+            </tr>
+            <tr id="141">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="141" value="Si" onclick="cambia_color141('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="141" value="No" onclick="cambia_color141('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="141" value="No se" onclick="cambia_color141('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.2.2 Control de Procesos Internos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles de validación son incorporados dentro de la aplicación para detectar cualquier corrupción de información a través de errores de proceso u actos deliberados.</td>
+            </tr>
+            <tr id="142">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="142" value="Si" onclick="cambia_color142('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="142" value="No" onclick="cambia_color142('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="142" value="No se" onclick="cambia_color142('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el diseño e implementación de aplicaciones aseguran que el riesgo de fallas de proceso que conlleven a perdidas de integridad son minimizados.</td>
+            </tr>
+            <tr id="143">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="143" value="Si" onclick="cambia_color143('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="143" value="No" onclick="cambia_color143('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="143" value="No se" onclick="cambia_color143('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.2.3 Integridad de Mensajes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos para asegurar y proteger la integridad de los mensajes en aplicaciones son identificados y controles apropiados identificados e implementados.</td>
+            </tr>
+            <tr id="144">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="144" value="Si" onclick="cambia_color144('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="144" value="No" onclick="cambia_color144('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="144" value="No se" onclick="cambia_color144('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si una evaluación de riesgos de seguridad se llevo a cabo para determinar si la integridad de los mensajes es requerido; y para identificar el método mas apropiado para su implementación</td>
+            </tr>
+            <tr id="145">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="145" value="Si" onclick="cambia_color145('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="145" value="No" onclick="cambia_color145('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="145" value="No se" onclick="cambia_color145('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.2.4 Validación de Datos de Salida</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los datos de salida de las aplicaciones es validado para asegurarse que el proceso de datos almacenados es correcto y apropiado según las circunstancias.</td>
+            </tr>
+            <tr id="146">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="146" value="Si" onclick="cambia_color146('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="146" value="No" onclick="cambia_color146('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="146" value="No se" onclick="cambia_color146('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 8.3 Controles Criptográficos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.3.1 Política para el Uso de Controles Criptográficos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la organización tiene una Política relacionado con el uso de controles criptográficos para la protección de la información.</td>
+            </tr>
+            <tr id="147">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="147" value="Si" onclick="cambia_color147('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="147" value="No" onclick="cambia_color147('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="147" value="No se" onclick="cambia_color147('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la política ha sido implementada exitosamente.</td>
+            </tr>
+            <tr id="148">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="148" value="Si" onclick="cambia_color148('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="148" value="No" onclick="cambia_color148('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="148" value="No se" onclick="cambia_color148('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la política de criptografía considera la administración hacia el uso de controles criptográficos, resultados de evaluación de riesgos para identificar los niveles de protección necesarios, métodos de administración de llaves y varios estándares para su efectiva implementación.</td>
+            </tr>
+            <tr id="149">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="149" value="Si" onclick="cambia_color149('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="149" value="No" onclick="cambia_color149('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="149" value="No se" onclick="cambia_color149('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.3.2 Administración de Llaves</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe una administración de llaves que apoye a la organización en el uso de técnicas de criptografía.</td>
+            </tr>
+            <tr id="150">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="150" value="Si" onclick="cambia_color150('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="150" value="No" onclick="cambia_color150('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="150" value="No se" onclick="cambia_color150('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si llaves criptográficas son protegidas contra modificaciones, perdidas y destrucción.</td>
+            </tr>
+            <tr id="151">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="151" value="Si" onclick="cambia_color151('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="151" value="No" onclick="cambia_color151('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="151" value="No se" onclick="cambia_color151('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si llaves secretas y privadas son protegidas contra divulgación no autorizada.</td>
+            </tr>
+            <tr id="152">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="152" value="Si" onclick="cambia_color152('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="152" value="No" onclick="cambia_color152('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="152" value="No se" onclick="cambia_color152('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los equipos utilizados para generar, almacenar las llaves están físicamente protegidos.</td>
+            </tr>
+            <tr id="153">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="153" value="Si" onclick="cambia_color153('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="153" value="No" onclick="cambia_color153('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="153" value="No se" onclick="cambia_color152('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el sistema de administración de llaves esta basado en un estándar acordado, procedimientos y métodos seguros.</td>
+            </tr>
+            <tr id="154">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="154" value="Si" onclick="cambia_color154('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="154" value="No" onclick="cambia_color154('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="154" value="No se" onclick="cambia_color154('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 8.4 Seguridad de Archivos de Sistemas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.4.1 Control de Software Operacional</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen controles para la implementación de software en sistemas operativos.</td>
+            </tr>
+            <tr id="155">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="155" value="Si" onclick="cambia_color155('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="155" value="No" onclick="cambia_color155('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="155" value="No se" onclick="cambia_color155('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.4.2 Protección de Datos de Prueba</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los datos de prueba son protegidos y controlados.</td>
+            </tr>
+            <tr id="156">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="156" value="Si" onclick="cambia_color156('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="156" value="No" onclick="cambia_color156('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="156" value="No se" onclick="cambia_color156('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el uso de informaciones personal o cualquier información sensitiva para prueba de bases de datos son enmascarados.</td>
+            </tr>
+            <tr id="157">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="157" value="Si" onclick="cambia_color157('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="157" value="No" onclick="cambia_color157('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="157" value="No se" onclick="cambia_color157('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.4.3 Control de Acceso a Librerías de Programas Fuentes</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen controles estrictos sobre el acceso a la librería de programas fuentes.</td>
+            </tr>
+            <tr id="158">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="158" value="Si" onclick="cambia_color158('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="158" value="No" onclick="cambia_color158('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="158" value="No se" onclick="cambia_color158('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 8.5 Seguridad en procesos de Desarrollo y Soporte</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.5.1 Procedimientos de Control de Cambios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen controles estrictos sobre la implementación de cambios a los sistemas informáticos.</td>
+            </tr>
+            <tr id="159">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="159" value="Si" onclick="cambia_color159('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="159" value="No" onclick="cambia_color159('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="159" value="No se" onclick="cambia_color159('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si este procedimiento considera la necesidad de evaluar riesgos, análisis de impacto sobre los cambios.</td>
+            </tr>
+            <tr id="160">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="160" value="Si" onclick="cambia_color160('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="160" value="No" onclick="cambia_color160('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="160" value="No se" onclick="cambia_color160('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.5.2 Revisión Técnica de aplicaciones después de cambios a sistemas operacionales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso o procedimiento para revisar y probar las aplicaciones criticas del negocio por impactos adversos en operaciones organizacionales o seguridad después de los cambios al sistema operativo.</td>
+            </tr>
+            <tr id="161">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="161" value="Si" onclick="cambia_color161('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="161" value="No" onclick="cambia_color161('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="161" value="No se" onclick="cambia_color161('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.5.3 Restricciones a cambios a paquetes de software</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las modificaciones a paquetes de software son evitados y/o limitados solo a cambios necesarios.</td>
+            </tr>
+            <tr id="162">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="162" value="Si" onclick="cambia_color162('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="162" value="No" onclick="cambia_color162('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="162" value="No se" onclick="cambia_color162('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los cambios son estrictamente controlados.</td>
+            </tr>
+            <tr id="163">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="163" value="Si" onclick="cambia_color163('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="163" value="No" onclick="cambia_color163('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="163" value="No se" onclick="cambia_color163('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.5.4 Divulgación de Información</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen los controles para prevenir la divulgación de información.</td>
+            </tr>
+            <tr id="164">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="164" value="Si" onclick="cambia_color164('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="164" value="No" onclick="cambia_color164('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="164" value="No se" onclick="cambia_color164('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles como es el escaneo de medios saliendo, inspecciones regulares del personal y actividades de sistemas permitidas bajo legislaciones locales, uso de recursos de monitoreo son considerados.</td>
+            </tr>
+            <tr id="165">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="165" value="Si" onclick="cambia_color165('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="165" value="No" onclick="cambia_color165('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="165" value="No se" onclick="cambia_color165('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.5.5 Desarrollo de Sistemas Outsourced</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el desarrollo de software outsorceado es supervisado y monitoreado por la organización.</td>
+            </tr>
+            <tr id="166">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="166" value="Si" onclick="cambia_color166('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="166" value="No" onclick="cambia_color166('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="166" value="No se" onclick="cambia_color166('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si puntos como son: acuerdos de licencia, requisitos contractuales sobre calidad, pruebas antes de instalación para la detección de troyanos etc.; son considerados.</td>
+            </tr>
+            <tr id="167">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="167" value="Si" onclick="cambia_color167('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="167" value="No" onclick="cambia_color167('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="167" value="No se" onclick="cambia_color167('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 8.6 Administración Vulnerabilidades Técnicas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 8.6.1 Control de vulnerabilidades Técnicas</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si información sobre vulnerabilidades técnicas relacionado con sistemas informáticos utilizados es obtenida en forma regular.</td>
+            </tr>
+            <tr id="168">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="168" value="Si" onclick="cambia_color168('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="168" value="No" onclick="cambia_color168('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="168" value="No se" onclick="cambia_color168('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la exposición de la organización a tales vulnerabilidades han sido evaluadas y medidas apropiadas se han tomado para mitigar los riesgos asociados.</td>
+            </tr>
+            <tr id="169">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="169" value="Si" onclick="cambia_color169('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="169" value="No" onclick="cambia_color169('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="169" value="No se" onclick="cambia_color169('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>9 Administración de Incidentes de Seguridad Informática			</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 9.1 Reportar eventos y debilidades de Seguridad Informática	</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 9.1.1 Reportando eventos de Seguridad Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si información sobre eventos de seguridad informáticos son reportados a través de canales de administración apropiados tan rápido como es posible.</td>
+            </tr>
+            <tr id="170">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="170" value="Si" onclick="cambia_color170('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="170" value="No" onclick="cambia_color170('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="170" value="No se" onclick="cambia_color170('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si un procedimiento formal para reportar eventos de seguridad informática, procedimiento de respuesta y escalacion de Incidentes ha sido desarrollado e implementado.</td>
+            </tr>
+            <tr id="171">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="171" value="Si" onclick="cambia_color171('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="171" value="No" onclick="cambia_color171('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="171" value="No se" onclick="cambia_color171('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 9.1.2 Reportando debilidades en la Seguridad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un procedimiento que asegure que todos los empleados de informática y servicios son requeridos de notificar y reportar cualquier observación o debilidades de seguridad sospechosas en el sistema o servicios.</td>
+            </tr>
+            <tr id="172">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="172" value="Si" onclick="cambia_color172('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="172" value="No" onclick="cambia_color172('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="172" value="No se" onclick="cambia_color172('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 9.2 Administración de incidentes y mejoras de Seguridad Informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 9.2.1 Responsabilidades y procedimientos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los procedimientos y responsabilidades administrativas fueron establecidos para asegurar una respuesta rápida, efectiva y ordenada a los incidentes de seguridad informática.</td>
+            </tr>
+            <tr id="173">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="173" value="Si" onclick="cambia_color173('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="173" value="No" onclick="cambia_color173('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="173" value="No se" onclick="cambia_color173('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el monitoreo de alertas y vulnerabilidades de sistemas son utilizados para detectar incidentes de seguridad informática.</td>
+            </tr>
+            <tr id="174">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="174" value="Si" onclick="cambia_color174('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="174" value="No" onclick="cambia_color174('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="174" value="No se" onclick="cambia_color174('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el objetivo de la administración de los incidentes de seguridad informáticos han sido acordados con la gerencia.</td>
+            </tr>
+            <tr id="175">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="175" value="Si" onclick="cambia_color175('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="175" value="No" onclick="cambia_color175('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="175" value="No se" onclick="cambia_color175('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 9.2.2 Aprendiendo de Incidentes de Seguridad Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un mecanismo para identificar y cuantificar el tipo, volumen y costos de los incidentes de seguridad informáticos.</td>
+            </tr>
+            <tr id="176">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="176" value="Si" onclick="cambia_color176('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="176" value="No" onclick="cambia_color176('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="176" value="No se" onclick="cambia_color176('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la información obtenida de la evaluación de los incidentes de seguridad informáticos pasados son utilizados para identificar incidentes recurrentes y de alto impacto.</td>
+            </tr>
+            <tr id="177">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="177" value="Si" onclick="cambia_color177('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="177" value="No" onclick="cambia_color177('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="177" value="No se" onclick="cambia_color177('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 9.2.3 Colectar evidencia</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si una acción de seguimiento contra una persona u organización después de un incidente de seguridad informático involucra acciones legales (ya sea civil o criminal).</td>
+            </tr>
+            <tr id="178">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="178" value="Si" onclick="cambia_color178('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="178" value="No" onclick="cambia_color178('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="178" value="No se" onclick="cambia_color178('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si evidencia relacionada al incidente es colectada, retenida y presentada para cumplir con las reglas de presentación de evidencia según la jurisdicción.</td>
+            </tr>
+            <tr id="179">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="179" value="Si" onclick="cambia_color179('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="179" value="No" onclick="cambia_color179('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="179" value="No se" onclick="cambia_color179('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si procedimientos internos fueron desarrollados y seguidos al colectar y presentar evidencia para el propósito de acciones disciplinarias dentro de la organización.</td>
+            </tr>
+            <tr id="180">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="180" value="Si" onclick="cambia_color180('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="180" value="No" onclick="cambia_color180('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="180" value="No se" onclick="cambia_color180('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>10 Administración Continuidad de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 10.1 Aspectos de Administración Continuidad de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 10.1.1 Incluyendo Seguridad Informática en la Continuidad de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso administrado que define los requisitos de seguridad informática para el desarrollo y mantenimiento de la continuidad de negocios a través de la organización.</td>
+            </tr>
+            <tr id="181">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="181" value="Si" onclick="cambia_color181('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="181" value="No" onclick="cambia_color181('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="181" value="No se" onclick="cambia_color181('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si este proceso contempla los riesgos que la organización esta enfrentando, identificación de activos del negocio críticos, identificación del impacto de incidentes, consideración de la implementación de controles adicionales de prevención y la documentación del plan de continuidad de negocios definiendo los requisitos de seguridad.</td>
+            </tr>
+            <tr id="182">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="182" value="Si" onclick="cambia_color182('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="182" value="No" onclick="cambia_color182('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="182" value="No se" onclick="cambia_color182('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 10.1.2 Continuidad de Negocios y Evaluación de Riesgo</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los eventos que causan interrupciones a los procesos del negocio han sido identificados junto con la probabilidad e impacto que tales interrupciones y sus consecuencias por la seguridad informática.</td>
+            </tr>
+            <tr id="183">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="183" value="Si" onclick="cambia_color183('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="183" value="No" onclick="cambia_color183('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="183" value="No se" onclick="cambia_color183('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 10.1.3 Desarrollando e implementando planes de continuidad incluyendo seguridad informática</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los planes fueron desarrollados para mantener y restaurar las operaciones del negocio, asegurar la disponibilidad de la información dentro de los niveles requeridos en los tiempos requeridos seguidos a una interrupción o falla a los procesos de negocios.</td>
+            </tr>
+            <tr id="184">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="184" value="Si" onclick="cambia_color184('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="184" value="No" onclick="cambia_color184('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="184" value="No se" onclick="cambia_color184('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el plan considera identificación y acuerdos de responsabilidades, identificación de perdidas aceptables, implementación de procedimientos de recuperación y restauración, documentación de procedimientos y pruebas regulares.</td>
+            </tr>
+            <tr id="185">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="185" value="Si" onclick="cambia_color185('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="185" value="No" onclick="cambia_color185('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="185" value="No se" onclick="cambia_color185('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 10.1.4 Arquitectura de Planeacion Continuidad de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si solo existe una arquitectura para el Plan de Continuidad de Negocios.</td>
+            </tr>
+            <tr id="186">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="186" value="Si" onclick="cambia_color186('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="186" value="No" onclick="cambia_color186('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="186" value="No se" onclick="cambia_color186('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si esta arquitectura se mantiene para garantizar que todos los planes son consistentes e identifican prioridades para pruebas y mantenimiento.</td>
+            </tr>
+            <tr id="187">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="187" value="Si" onclick="cambia_color187('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="187" value="No" onclick="cambia_color187('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="187" value="No se" onclick="cambia_color187('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el plan de continuidad de negocios define los requisitos sobre seguridad informáticos identificados.</td>
+            </tr>
+            <tr id="188">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="188" value="Si" onclick="cambia_color188('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="188" value="No" onclick="cambia_color188('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="188" value="No se" onclick="cambia_color188('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 10.1.5 Pruebas, Mantenimiento y re-evaluación de Planes de Continuidad de Negocios</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los Planes de Continuidad de Negocios son probados regularmente  para garantizar que están actualizados y son efectivos.</td>
+            </tr>
+            <tr id="189">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="189" value="Si" onclick="cambia_color189('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="189" value="No" onclick="cambia_color189('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="189" value="No se" onclick="cambia_color189('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las pruebas de los planes de continuidad garantizan que todos los miembros del equipo de recuperación y otros grupos de empleados relevantes están concientes del plan y de sus responsabilidades por la continuidad del negocio y la seguridad informática y conocen su role cuando el plan es activado.</td>
+            </tr>
+            <tr id="190">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="190" value="Si" onclick="cambia_color190('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="190" value="No" onclick="cambia_color190('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="190" value="No se" onclick="cambia_color190('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>11 Cumplimiento</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp 11.1 Cumplimiento con Regulaciones Legales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.1 Identificación de Legislación aplicable</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los requisitos relevantes a regulaciones, contratos, etc. y el enfoque organizativo para cumplir los requisitos fueron definidos explícitamente y documentados para cada sistema informático y organización. </td>
+            </tr>
+            <tr id="191">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="191" value="Si" onclick="cambia_color191('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="191" value="No" onclick="cambia_color191('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="191" value="No se" onclick="cambia_color191('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles específicos y responsabilidades individuales para cumplir con los requisitos fueron definidos y documentados.</td>
+            </tr>
+            <tr id="192">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="192" value="Si" onclick="cambia_color192('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="192" value="No" onclick="cambia_color192('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="192" value="No se" onclick="cambia_color192('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.2 Derechos de Propiedad Intelectual</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen procedimientos que garanticen el cumplimiento con requisitos legislativos, regulaciones y contratos en el uso de material en el cual pueden existir derechos de propiedad intelectual y en el uso de productos de software propietarios.</td>
+            </tr>
+            <tr id="193">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="193" value="Si" onclick="cambia_color193('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="193" value="No" onclick="cambia_color193('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="193" value="No se" onclick="cambia_color193('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los procedimientos están bien implementados.</td>
+            </tr>
+            <tr id="194">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="194" value="Si" onclick="cambia_color194('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="194" value="No" onclick="cambia_color194('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="194" value="No se" onclick="cambia_color194('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si controles como son: políticas de cumplimiento sobre los derechos de publicación de propiedad intelectual, procedimientos para la adquisición de software, políticas de concientizacion, mantener prueba de propiedad, cumpliendo con los términos y condiciones han sido considerado.</td>
+            </tr>
+            <tr id="195">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="195" value="Si" onclick="cambia_color195('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="195" value="No" onclick="cambia_color195('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="195" value="No se" onclick="cambia_color195('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.3 Protección de Registros Organizacionales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si registros importantes de la organización son protegidos de perdidas, destrucción y falsificación de acuerdo con regulaciones, contratos y requisitos de negocios.</td>
+            </tr>
+            <tr id="196">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="196" value="Si" onclick="cambia_color196('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="196" value="No" onclick="cambia_color196('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="196" value="No se" onclick="cambia_color196('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se ha considerado la posibilidad del deterioro de los medios de para el almacenaje de los registros.    </td>
+            </tr>
+            <tr id="197">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="197" value="Si" onclick="cambia_color197('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="197" value="No" onclick="cambia_color197('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="197" value="No se" onclick="cambia_color197('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los sistemas de almacenamiento de datos fueron escogidos para que datos requeridos puedan ser recuperados o restaurados en un tiempo y formato aceptable, dependiendo en los requisitos a cumplir.</td>
+            </tr>
+            <tr id="198">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="198" value="Si" onclick="cambia_color198('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="198" value="No" onclick="cambia_color198('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="198" value="No se" onclick="cambia_color198('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.4 Protección de Datos y Privacidad de Datos Personales</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la protección y privacidad de los datos es asegurada según legislación, regulación relevantes y si es aplicable según cláusulas contractuales.</td>
+            </tr>
+            <tr id="199">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="199" value="Si" onclick="cambia_color199('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="199" value="No" onclick="cambia_color199('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="199" value="No se" onclick="cambia_color199('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.5 Prevención del mal uso de las facilidades de procesos informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el uso de las facilidades de procesos informáticos para efectos personales o no autorizados sin el consentimiento de la gerencia es tratado como uso inapropiado de las facilidades.</td>
+            </tr>
+            <tr id="200">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="200" value="Si" onclick="cambia_color200('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="200" value="No" onclick="cambia_color200('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="200" value="No se" onclick="cambia_color200('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si un mensaje de advertencia al momento de log-on es presentado en la pantalla previo a su logon.</td>
+            </tr>
+            <tr id="201">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="201" value="Si" onclick="cambia_color201('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="201" value="No" onclick="cambia_color201('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="201" value="No se" onclick="cambia_color201('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se obtiene asesoria legal antes de implementar cualquier procedimiento de monitoreo.</td>
+            </tr>
+            <tr id="202">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="202" value="Si" onclick="cambia_color202('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="202" value="No" onclick="cambia_color202('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="202" value="No se" onclick="cambia_color202('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.1.6 Regulación de Controles Criptográfico</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los controles criptográficos son utilizados en cumplimiento con acuerdo, leyes y regulaciones relevantes.</td>
+            </tr>
+            <tr id="203">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="203" value="Si" onclick="cambia_color203('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="203" value="No" onclick="cambia_color203('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="203" value="No se" onclick="cambia_color203('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 11.2 Cumplimiento con Políticas y estándares de Seguridad y cumplimientos técnicos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.2.1 Cumplimiento con Políticas y Estándares de Seguridad</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los gerentes aseguran que todos los procedimientos de seguridad dentro de sus áreas de responsabilidad son efectuados correctamente para lograr cumplimiento con las políticas y estándares de seguridad.</td>
+            </tr>
+            <tr id="204">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="204" value="Si" onclick="cambia_color204('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="204" value="No" onclick="cambia_color204('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="204" value="No se" onclick="cambia_color204('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Los Gerentes revisan periódicamente el cumplimiento de las facilidades de procesamiento informáticos dentro de sus área de responsabilidad para el cumplimiento con procedimientos y políticas de seguridad apropiados.</td>
+            </tr>
+            <tr id="205">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="205" value="Si" onclick="cambia_color205('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="205" value="No" onclick="cambia_color205('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="205" value="No se" onclick="cambia_color205('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.2.2 Revisión del Cumplimiento Técnico</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los sistemas informáticos son regularmente revisados con relación al cumplimiento con la implementación de estándares de seguridad.</td>
+            </tr>
+            <tr id="206">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="206" value="Si" onclick="cambia_color206('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="206" value="No" onclick="cambia_color206('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="206" value="No se" onclick="cambia_color206('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la revisión del cumplimiento técnico es efectuado por o bajo la supervisión de personal competente y autorizado.</td>
+            </tr>
+            <tr id="207">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="207" value="Si" onclick="cambia_color207('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="207" value="No" onclick="cambia_color207('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="207" value="No se" onclick="cambia_color207('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp 11.3 Consideraciones Auditorias de Sistemas	</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.3.1 Controles de Auditoria de Sistemas Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos de auditoria y actividades que involucran revisiones de los sistemas operacionales deben ser planeadas cuidadosamente y acordadas para minimizar los riesgos o interrupciones a los procesos de negocio.</td>
+            </tr>
+            <tr id="208">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="208" value="Si" onclick="cambia_color208('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="208" value="No" onclick="cambia_color208('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="208" value="No se" onclick="cambia_color208('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los requisitos de auditoria y alcance han sido acordados con la gerencia apropiada.</td>
+            </tr>
+            <tr id="209">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="209" value="Si" onclick="cambia_color209('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="209" value="No" onclick="cambia_color209('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="209" value="No se" onclick="cambia_color209('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 11.3.2 Protección de las Herramientas de Auditorias de Sistemas Informáticos</strong></td></tr>
+           <tr><td><br></td></tr>
+
+           <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si acceso a las herramientas de auditoria de sistemas como ser software o archivos de datos son protegidos para prevenir posible mal uso o compromisos.</td>
+            </tr>
+            <tr id="210">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="210" value="Si" onclick="cambia_color210('rgb(67, 170, 139)')"> Si
+                    <input type="radio" name="210" value="No" onclick="cambia_color210('rgb(255, 89, 100)')"> No
+                    <input type="radio" name="210" value="No se" onclick="cambia_color210('rgb(255, 89, 100)')"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+            <tr>
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las herramientas de auditoria de sistemas informáticos son separados de los sistemas de desarrollo y operacionales a menos que se les haya dado un nivel apropiado de protección adicional.</td>
+            </tr>
+            <tr id="211">
+                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <input type="radio" name="211" value="Si" onclick="move211()"> Si
+                    <input type="radio" name="211" value="No" onclick="move211()"> No
+                    <input type="radio" name="211" value="No se" onclick="move211()"> No sé
+                </td>
+            </tr>
+            <tr><td><br></td></tr>
+
+        </table>
+        </div>
+        <br>
+
+    <button type="submit" class="btn btn-primary" style="float:left;" >Enviar</button>
+    </form>
+
+<a href="{% url 'ingreso' %}"><button class="btn btn-warning" >Volver</button></a>
+
+
+
+</div>
+</div>
+</div>
+
+    <script>
+
+        function move1() {
+  var elem = document.getElementById("myBar");
+  var width = 0.0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 0.47) {
+      clearInterval(id);
+    } else {
+      width = width + 0.47;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function move2() {
+  var elem = document.getElementById("myBar");
+  var width = 0.47;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 0.94) {
+      clearInterval(id);
+    } else {
+      width = width + 0.47;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+function move3() {
+  var elem = document.getElementById("myBar");
+  var width = 0.94;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 1.41) {
+      clearInterval(id);
+    } else {
+      width = width + 0.47;
+      elem.style.width = width + '%';
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+
+        function cambia_color(bg) {
+            x = document.getElementById(1);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color2(bg) {
+            x = document.getElementById(2);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color3(bg) {
+            x = document.getElementById(3);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color4(bg) {
+            x = document.getElementById(4);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color5(bg) {
+            x = document.getElementById(5);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color6(bg) {
+            x = document.getElementById(6);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color7(bg) {
+            x = document.getElementById(7);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color8(bg) {
+            x = document.getElementById(8);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color9(bg) {
+            x = document.getElementById(9);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color10(bg) {
+            x = document.getElementById(10);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color11(bg) {
+            x = document.getElementById(11);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color12(bg) {
+            x = document.getElementById(12);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color13(bg) {
+            x = document.getElementById(13);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color14(bg) {
+            x = document.getElementById(14);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color15(bg) {
+            x = document.getElementById(15);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color16(bg) {
+            x = document.getElementById(16);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color17(bg) {
+            x = document.getElementById(17);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color18(bg) {
+            x = document.getElementById(18);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color19(bg) {
+            x = document.getElementById(19);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color20(bg) {
+            x = document.getElementById(20);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color21(bg) {
+            x = document.getElementById(21);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color22(bg) {
+            x = document.getElementById(22);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color23(bg) {
+            x = document.getElementById(23);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color24(bg) {
+            x = document.getElementById(24);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color25(bg) {
+            x = document.getElementById(25);
+            x.style.backgroundColor = bg;
+        }
+        function cambia_color26(bg) {
+            x = document.getElementById(26);
+            x.style.backgroundColor = bg;
+        }function cambia_color27(bg) {
+            x = document.getElementById(27);
+            x.style.backgroundColor = bg;
+        }function cambia_color28(bg) {
+            x = document.getElementById(28);
+            x.style.backgroundColor = bg;
+        }function cambia_color29(bg) {
+            x = document.getElementById(29);
+            x.style.backgroundColor = bg;
+        }function cambia_color30(bg) {
+            x = document.getElementById(30);
+            x.style.backgroundColor = bg;
+        }function cambia_color31(bg) {
+            x = document.getElementById(31);
+            x.style.backgroundColor = bg;
+        }function cambia_color32(bg) {
+            x = document.getElementById(32);
+            x.style.backgroundColor = bg;
+        }function cambia_color33(bg) {
+            x = document.getElementById(33);
+            x.style.backgroundColor = bg;
+        }function cambia_color34(bg) {
+            x = document.getElementById(34);
+            x.style.backgroundColor = bg;
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

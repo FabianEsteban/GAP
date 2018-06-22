@@ -1,589 +1,240 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+            <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
+            <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+            <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
 
-        <script src="{% static 'js/bootstrap.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+            <title>Análisis GAP</title>
 
-
-
-        <title>Análisis GAP</title>
-
-
-
-    </head>
-
-    <style>
-
-        #table{
-            width: 100%;
+        </head>
+        <style type="text/css">
+        body{
             font: 100% monospace;
-            border: 1px solid #000;
+        }
+        /*Header*/
+           ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(19, 159, 215);
+            }
+
+            li {
+                float: left;
+                cursor: pointer;
+            }
+
+            li div {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+
+            }
+
+
+
+            .active {
+                background-color: red!important;
+                color: white!important;
+            }
+            /*Header*/
+
+            /*ZOOM*/
+            .zoom {
+                padding: 50px;
+                background-color: green;
+                transition: transform .2s; /* Animation */
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+            .zoom:hover {
+                transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+            /*ZOOM*/
+
+            /*Footer*/
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: rgb(19, 159, 215);
+                color: white;
+                text-align: right;
+            }
+            /*Footer*/
+
+
+            /* Map */
+            #map {
+                height: 100%;
+            }
+
+          .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          }
+
+          #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+          }
+
+          #pac-input:focus {
+            border-color: #4d90fe;
+          }
+
+          .pac-container {
+            font-family: Roboto;
+          }
+
+          #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+          }
+
+          #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+          }
+          #target {
+            width: 345px;
+          }
+        </style>
+
+        <script>
+        /*
+            function ocultarDiv(id, id2){
+                if (document.getElementById){
+                    var div = document.getElementById(id);
+                    var div2 = document.getElementById(id2);
+                    if(div.style.display == 'block'){
+                        div.style.display = 'none';
+                        div2.style.display = 'block';
+                    }else{
+                         div.style.display = 'block';
+                         div2.style.display = 'none';
+                    }
+                }
+            }
+        */
+        function mostrarContacto(idContacto, idPrincipal){
+            var idC = document.getElementById(idContacto);
+            var idP = document.getElementById(idPrincipal);
+            if(idC.style.display == 'none'){
+                idP.style.display = 'none';
+                idC.style.display = 'block';
+            }
         }
 
-
-
-    </style>
-
-    <h1>Análisis GAP</h1>
-
-    <form id="streamform" action="{% url 'resultados' %}" method="get">
-        {% csrf_token %}
-
-        <table id="table">
-
-           <tr><td><strong>1 Política Seguridad</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong> &nbsp &nbsp 1.1 Política Seguridad</strong></td></tr>
-           <tr><td><br></td></tr>
-
-
-           <tr><td><strong> &nbsp &nbsp &nbsp &nbsp 1.1.1 Documento Política Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbspExiste una Política de Seguridad Informática la cual ha sido aprobada por la Gerencia, publicada y comunicada a todos los empleados? </td>
-            </tr>
-            <tr id = "1">
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="1" onclick="cambia_color('rgb(67, 170, 139)')"> Si
-                    <input type="radio" name="1" onclick="cambia_color('rgb(255, 89, 100)')"> No
-                    <input type="radio" name="1" onclick="cambia_color('rgb(255, 89, 100)')"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp La Politica establece el compromiso de la Gerencia y el acercamiento organizacional a la administración de seguridad informática?</td>
-            </tr>
-            <tr id="2">
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="2" onclick="cambia_color2('rgb(67, 170, 139)')"> Si
-                    <input type="radio" name="2" onclick="cambia_color2('rgb(255, 89, 100)')"> No
-                    <input type="radio" name="2" onclick="cambia_color2('rgb(255, 89, 100)')"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>  &nbsp &nbsp &nbsp &nbsp 1.1.2 Revisión de Política Seguridad Informática</strong></td></tr>
-            <tr><td><br></td></tr>
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la Política de Seguridad Informática es revisada en intervalos programados, o si cambios significativos ocurren para asegurarse su continuidad, adecuación y efectividad.	</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="3" value="Si"> Si
-                    <input type="radio" name="3" value="No"> No
-                    <input type="radio" name="3" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la Política de Seguridad Informática tiene un dueño, el cual tiene responsabilidad aprobada para desarrollar, revisar y evaluar la Política de Seguridad.	 </td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="4" value="Si"> Si
-                    <input type="radio" name="4" value="No"> No
-                    <input type="radio" name="4" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si existe un procedimiento definido para la revisión de la Política de Seguridad Informática y si incluye requisitos para la revisión por la Gerencia.	 </td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="5" value="Si"> Si
-                    <input type="radio" name="5" value="No"> No
-                    <input type="radio" name="5" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si se toman en cuenta los resultados de las revisiones gerenciales.	 </td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="6" value="Si"> Si
-                    <input type="radio" name="6" value="No"> No
-                    <input type="radio" name="6" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp Si se obtiene la aprobación de la gerencia para la Política revisada.	</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="7" value="Si"> Si
-                    <input type="radio" name="7" value="No"> No
-                    <input type="radio" name="7" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>2 Organización de la Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp 2.1 Organización Interna</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.1 Compromiso Gerencial a la Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la gerencia demuestra un apoyo activo a las medidas de seguridad dentro de la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="8" value="Si"> Si
-                    <input type="radio" name="8" value="No"> No
-                    <input type="radio" name="8" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.2 Coordinación Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si actividades relacionadas con la Seguridad Informática son coordinadas por representantes de diversas partes de la organización con roles y responsabilidades pertinentes.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="9" value="Si"> Si
-                    <input type="radio" name="9" value="No"> No
-                    <input type="radio" name="9" value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.3 Distribución Responsabilidades Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las responsabilidades para la protección de los activos individuales y el llevar a cabo procesos específicos de seguridad fueron definidos claramente.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="10" value="Si"> Si
-                    <input type="radio" name="10" value="No"> No
-                    <input type="radio" name="10"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.4 Proceso Autorización para Facilidades de Procesos Informáticos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso de autorización gerencial definido e implementado para cualquier nueva facilidad de proceso de información.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="11" value="Si"> Si
-                    <input type="radio" name="11" value="No"> No
-                    <input type="radio" name="11"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.5 Acuerdos de Confidencialidad</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las necesidades de la organización con relación a acuerdos de confidencialidad y no divulgación (NDA) para la protección de la información han sido claramente definidos y regularmente revisados.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="12" value="Si"> Si
-                    <input type="radio" name="12" value="No"> No
-                    <input type="radio" name="12"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.6 Contacto con Autoridades</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existen procedimientos que describen cuando y por quien deben ser contactadas autoridades correspondientes como ser: la Policía, Bomberos, etc. y como debe ser reportado el incidente.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="13" value="Si"> Si
-                    <input type="radio" name="13" value="No"> No
-                    <input type="radio" name="13"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.7 Contacto con Grupos de Interés Especial</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si contacto adecuado con grupos de interés especial o foros de especialistas de seguridad y asociaciones de profesionales son mantenidas.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="14" value="Si"> Si
-                    <input type="radio" name="14" value="No"> No
-                    <input type="radio" name="14"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.1.8 Revisión Independiente de la Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la manera de administrar la seguridad informática y su implementación es revisada independientemente en intervalos planeados o cuando ocurren cambios mayores con relación a implementaciones de seguridad.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="15" value="Si"> Si
-                    <input type="radio" name="15" value="No"> No
-                    <input type="radio" name="15"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp 2.2 Externos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.1 Identificación de Riesgos por accesos de Externos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si riesgos a la información de la organización y sus instalaciones operacionales, de procesos que involucran a externos o terceros ha sido identificada y controles apropiados han sido implementados antes de otorgarles acceso.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="16" value="Si"> Si
-                    <input type="radio" name="16" value="No"> No
-                    <input type="radio" name="16"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.2 Manejando la seguridad al tratar con Clientes</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los requisitos de seguridad identificados son cumplidos antes de otorgarle acceso al cliente a la información o activos de la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="17" value="Si"> Si
-                    <input type="radio" name="17" value="No"> No
-                    <input type="radio" name="17"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 2.2.3 Manejando la seguridad en acuerdos con Terceros</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si el acuerdo con terceros, involucrando accesos, procesos, comunicaciones o administración de la información de la organización o facilidades de proceso, o introduciendo productos o servicios a las facilidades de proceso de la información, cumple con todos los requisitos de seguridad adecuados.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="18" value="Si"> Si
-                    <input type="radio" name="18" value="No"> No
-                    <input type="radio" name="18"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>3 Administración Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp 3.1 Responsabilidad sobre Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.1 Inventario de Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los activos han sido identificados y un inventario o registro se mantiene con todos los activos importantes.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="19" value="Si"> Si
-                    <input type="radio" name="19" value="No"> No
-                    <input type="radio" name="19"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.2 Dueños de Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si cada activo identificado tiene un dueño, una clasificación de seguridad definida y acordada y restricción de accesos que son revisados regularmente.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="20" value="Si"> Si
-                    <input type="radio" name="20" value="No"> No
-                    <input type="radio" name="20"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.1.3 Uso Aceptable de Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si regulaciones para el uso aceptable de información y activos asociados con una facilidad de proceso de la información han sido identificados, documentados e implementados.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="21" value="Si"> Si
-                    <input type="radio" name="21" value="No"> No
-                    <input type="radio" name="21"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp 3.2 Clasificación Información</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.2.1 Guía de Clasificación</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la información es clasificada en términos de valor, requisitos legales, sensibilidad y criticidad para la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="22" value="Si"> Si
-                    <input type="radio" name="22" value="No"> No
-                    <input type="radio" name="22"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 3.2.2 Etiquetado y Manejo de la Información</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si un set de procedimientos apropiados han sido definidos para el etiquetado y manejo de la información de acuerdo con el esquema de clasificación adoptada por la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="23" value="Si"> Si
-                    <input type="radio" name="23" value="No"> No
-                    <input type="radio" name="23"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>4 Seguridad Recursos Humanos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp 4.1 Previo a contratación</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.1 Roles y Responsabilidades</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los roles y responsabilidades de seguridad de los empleados, contratistas y terceros fueron definidos y documentados de acuerdo con la política de seguridad informática de la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="24" value="Si"> Si
-                    <input type="radio" name="24" value="No"> No
-                    <input type="radio" name="24"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.2 Revisión Antecedentes</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si se efectuó una revisión de antecedentes para todos los candidatos a emplear, contratistas y terceros  según regulaciones relevantes.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="25" value="Si"> Si
-                    <input type="radio" name="25" value="No"> No
-                    <input type="radio" name="25"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.3 Términos y Condiciones de Empleo</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si a los empleados, contratistas y terceros se les pide de firmar un Acuerdo de Confidencialidad o NO Divulgación como parte de sus acuerdos iniciales y condiciones al contrato de trabajo.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="26" value="Si"> Si
-                    <input type="radio" name="26" value="No"> No
-                    <input type="radio" name="26"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.1.4 Términos y Condiciones de Trabajo</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los términos y condiciones de trabajo cubren las responsabilidades del empleado con relación a la seguridad informática.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="27" value="Si"> Si
-                    <input type="radio" name="27" value="No"> No
-                    <input type="radio" name="27"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp 4.2 Durante el empleo</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.1 Responsabilidades Administrativas</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si la administración requiere que los empleados, contratistas y terceros apliquen seguridad de acuerdo con políticas y procedimientos establecidos por la organización.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="28" value="Si"> Si
-                    <input type="radio" name="28" value="No"> No
-                    <input type="radio" name="28"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.2 Concientizacion, educación y entrenamiento sobre Seguridad Informática</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si todos los empleados en la organización, y donde sea relevante, contratistas y terceros reciben entrenamiento adecuado de seguridad como también actualizaciones regulares en las políticas y procedimientos organizacionales correspondiente a su funciones.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="29" value="Si"> Si
-                    <input type="radio" name="29" value="No"> No
-                    <input type="radio" name="29"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.2.3 Proceso disciplinario</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso disciplinario formal para los empleados que han cometido una falta en seguridad.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="30" value="Si"> Si
-                    <input type="radio" name="30" value="No"> No
-                    <input type="radio" name="30"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp 4.3 Termino o transferencia laboral</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.1 Responsabilidades de termino</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si las responsabilidades para efectuar la terminación o cambio laboral están claramente definidas y asignadas.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="31" value="Si"> Si
-                    <input type="radio" name="31" value="No"> No
-                    <input type="radio" name="31"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.2 Devolución de Activos</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si existe un proceso que asegure que todos los empleados, contratistas y terceros hagan entrega de los activos de la organización bajo su control al terminar su relación laboral, contrato o acuerdo.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="32" value="Si"> Si
-                    <input type="radio" name="32" value="No"> No
-                    <input type="radio" name="32"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-            <tr><td><strong>&nbsp &nbsp &nbsp &nbsp 4.3.3 Eliminación de derechos de Acceso</strong></td></tr>
-           <tr><td><br></td></tr>
-
-           <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Si los derechos de acceso de todos los empleados, contratistas y terceros a informaciones o facilidades informáticas, serán eliminados al termino de su relación laboral, contrato o acuerdo o será ajustado en caso de cambios.</td>
-            </tr>
-            <tr>
-                <td> &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <input type="radio" name="33" value="Si"> Si
-                    <input type="radio" name="33" value="No"> No
-                    <input type="radio" name="33"value="No sé"> No sé
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-
-
-        </table>
-        <br>
-        <button type="submit" class="btn btn-primary" style="float:left;" >Enviar</button>
-
-    </form>
-
-
-    <script>
-
-        function cambia_color(bg) {
-            x = document.getElementById(1);
-            x.style.backgroundColor = bg;
+        function mostrarPrincipal(idContacto, idPrincipal){
+            var idC = document.getElementById(idContacto);
+            var idP = document.getElementById(idPrincipal);
+            console.log(idP.style.display);
+            if(idP.style.display == 'none'){
+                idC.style.display = 'none';
+                idP.style.display = 'block';
+            }
         }
-        function cambia_color2(bg) {
-            x = document.getElementById(2);
-            x.style.backgroundColor = bg;
-        }
+        </script>
 
-    </script>
+    <body style="background-color: white;">
+        <!-- Navbar -->
+        <ul class="w3-animate-opacity">
+          <li onClick="mostrarPrincipal('contacto', 'principal')"><div style="color: white">Principal</div></li>
+          <li onClick="mostrarContacto('contacto', 'principal')"><div  style="color: white">Quiénes somos</div></li>
+          <li style="float:right"><a href="{% url 'login' %}"><div style="color: white">Iniciar sesión</div></a></li>
+        </ul>
+         <!-- Navbar -->
 
+
+
+        <!--Secciones-->
+        <div style="background-color: white;">
+            <div id ="principal" style="margin-bottom: 80px; display: block;">
+                <div class="w3-container"><br><br><br><br>
+                    <h1 style="text-align: center; font-weight: bold;" class="w3-center w3-animate-right">Análisis GAP</h1>
+                    <br>
+                    <h2 style="margin-left: 50px; text-align: left!important;" class="w3-center w3-animate-left">Análisis GAP</h2>
+                    <br>
+                    <p style ="text-align: justify!important; margin-left: 100px;margin-right: 100px; text-indent: 50px" class="w3-center w3-animate-left">
+                            Antes de iniciar el proceso de auditoría, muchas organizaciones realizan una auditoría preliminar que les permita conocer el nivel de cumplimiento de la norma de sus sistemas de gestión, y qué acción correctiva - en su caso - es necesario tomar. El Gap Análisis le asegura que su sistema de gestión cumple con los requisitos de la norma, esquema o conjunto de criterios de evaluación.
+                    </p>
+                    <br>
+                    <h2 style="margin-left: 50px; text-align: left!important;" class="w3-center w3-animate-left">Beneficios del GAP Análisis</h2>
+                    <br>
+                    <div style ="text-align: justify!important; margin-left: 100px;margin-right: 100px; text-indent: 50px" class="w3-center w3-animate-left">
+
+                            <li>Identificación de riesgos en sus procesos.</li><br>
+                            <li>Descubrir las necesidades de su organización para alcanzar la certificación.</li><br>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id ="contacto" style="margin-bottom: 80px; display: none;" >
+                <div class="w3-container"><br><br><br><br>
+                    <h1 style="text-align: center; font-weight: bold;" class="w3-center w3-animate-right">Quiénes somos...</h1>
+                    <br><br><br>
+                </div>
+                <p style ="text-align: justify!important; margin-left: 100px;margin-right: 100px; text-indent: 50px" class="w3-center w3-animate-left">
+                            Grupo de estudiantes de la facultad de Ingeniería de la prestigiosa Universidad Andrés Bello.
+                    </p><br><br><br>
+                    <h1 style="text-align: center; font-weight: bold;" class="w3-center w3-animate-left">Contactanos</h1>
+                    <p style ="text-align: justify!important; margin-left: 100px;margin-right: 100px; text-indent: 50px" class="w3-center w3-animate-right">
+                            <center>
+
+                            <br><font size="9px"> +569 79793773</font><br>
+                            <font size="5px">gapanalisis@uandresbello.edu</font>
+                            </center>
+                    </p>
+            </div>
+
+        </div>
+        <!--Secciones-->
+
+        <!--footer-->
+        <div class="footer">
+            <p style="margin-right: 15px;"> Desarrollado por la Universidad Andrés Bello</p>
+        </div>
+        <!--footer-->
+
+
+
+    </body>
 </html>
-
 
 

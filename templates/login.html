@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    	<title>Análisis GAP</title>
+
+    	<!-- Bootstrap -->
+    	<link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+        <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <style type="text/css">
+
+       body{
+            background-color: white;
+            font: 100% monospace;
+        }
+
+        /*Header*/
+           ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(19, 159, 215);
+            }
+
+            li {
+                float: left;
+                cursor: pointer;
+            }
+
+            li div {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+
+            }
+
+
+
+            .active {
+                background-color: red!important;
+                color: white!important;
+            }
+            /*Header*/
+
+        /*Footer*/
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: rgb(19, 159, 215);
+                color: white;
+                text-align: right;
+            }
+            /*Footer*/
+
+    </style>
+
+	<body>
+
+        <!-- Navbar -->
+        <ul class="w3-animate-opacity">
+          <li style="float:right"><a href="{% url 'index' %}"><div style="color: white">Volver</div></a></li>
+        </ul>
+         <!-- Navbar -->
+
+
+        <div class="container" id="ingreso" name="ingreso" style="margin-top: 100px;">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <br>
+                <div class="login-panel panel panel-default" style="background-color: white">
+                    <div class="panel-heading" style="background-color: rgb(19, 159, 215)">
+                    <h3 class="panel-title" style="color: white">Ingreso</h3>
+                    </div>
+                        <div class="panel-body">
+                            {% if form.errors %}
+                            <b><p style="color:red; font-size:11px">* Su ID y contraseña no coinciden. Por favor intentelo nuevamente.</p> </b><br>
+                            {% endif %}
+                            <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                                <table>
+                                <tr>
+                                    <td>ID :&nbsp &nbsp</td>
+                                    <td>{{ form.username }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Contraseña :&nbsp &nbsp</td>
+                                    <td>{{ form.password }}</td>
+                                </tr>
+                                </table>
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit">Ingresar</button>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <div class="footer">
+            <p style="margin-right: 15px;"> Desarrollado por Universidad Andrés Bello</p>
+        </div>
+        <!--footer-->
+
+    </body>
+
+</html>

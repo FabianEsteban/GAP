@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="{% static 'admin/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+
+        <script src="{% static 'admin/js/bootstrap.js' %}"></script>
+        <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+
+
+        <title>Análisis GAP</title>
+
+    </head>
+
+    <style>
+        body{
+            background-color: white;
+            font: 120% monospace;
+        }
+
+        /*Header*/
+           ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(19, 159, 215);
+            }
+
+            li {
+                float: left;
+                cursor: pointer;
+            }
+
+            li div {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 1px 16px;
+                text-decoration: none;
+
+            }
+
+
+
+            .active {
+                background-color: red!important;
+                color: white!important;
+            }
+            /*Header*/
+
+        /*Footer*/
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: rgb(19, 159, 215);
+                color: white;
+                text-align: right;
+            }
+            /*Footer*/
+    </style>
+
+    <body>
+        <!-- Navbar -->
+        <ul class="w3-animate-opacity">
+            <li><div style="color: white; cursor: default">{{usuario}}</div></li>
+            <li><a href="{% url 'ingreso' %}"><div style="color: white">Volver</div></a></li>
+            <li style="float:right"><a href="{% url 'logout' %}"><div style="color: white">Salir</div></a></li>
+        </ul>
+         <!-- Navbar -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div style="padding-top: 150px; ">
+                        <div class="login-panel panel panel-default" style="background-color: white">
+                            <div class="panel-heading" style="background-color: rgb(19, 159, 215)">
+                                <h3 class="panel-title" style="color: white">Agregar</h3>
+                            </div>
+                            <center>
+
+         <form method="post" action="{% url 'signup' %}">
+
+        {% csrf_token %}
+
+        <table
+            <tr>
+                <td>
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Empresa: </td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Cantidad: </td>
+                <td>{{ form.last_name }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Clave: </td>
+                <td>{{ form.password }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <hr>
+                </td>
+            </tr>
+
+
+        </table>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+        <br><br><br>
+    </form>
+
+
+
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <!--footer-->
+        <div class="footer">
+            <p style="margin-right: 15px;"> Desarrollado por la Universidad Andrés Bello</p>
+        </div>
+        <!--footer-->
+
+    </body>
+
+</html>

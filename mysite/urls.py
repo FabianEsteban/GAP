@@ -16,9 +16,22 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from page import views
+from django.conf.urls import handler500
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
+    url(r'^login$', login, {'template_name':'login.html'}, name="login"),
+    url(r'^preguntas/', views.preguntas, name='preguntas'),
     url(r'^resultados/', views.resultados, name='resultados'),
+    url(r'^promedio/', views.promedio, name='promedio'),
+    url(r'^ingreso/$', views.ingreso, name='ingreso'),
+    url(r'^logout$', logout, {'template_name': 'pages/index.html', }, name="logout"),
+    url(r'^empresa/$', views.empresa, name='empresa'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^administrador/$', views.administrador, name='administrador'),
+
 ]
+
+handler500 = views.error_500
